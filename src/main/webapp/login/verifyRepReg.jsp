@@ -19,31 +19,39 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			//Get parameters from the HTML form at the index.jsp
-			String username = request.getParameter("username");			
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			String email = request.getParameter("email");
+			
 			
 			ResultSet login_info = stmt.executeQuery("select * from customerservicerep where username='"+username+"'");
 			if(login_info.next() && username != null && username.length() != 0) {
-				PreparedStatement ps = con.prepareStatement("delete from customerservicerep where username=?");
-				ps.setString(1, username);
+				out.println("The username " + username + " already exists within the database. Please try again."); %>
+				<button type="button" name="back" onclick="history.back()">Try Again.</button>
+				<% 
+			} else if (username == null || username.length() == 0 || password == null || password.length() == 0) {
+				out.println("Invalid username or password. Please try again."); %>
+				<button type="button" name="back" onclick="history.back()">Try Again.</button>
+				<%
+						
+			} else {
+				String insert = "insert into customerservicerep(username, password, email)" + "VALUES (?, ?, ?)";
+				PreparedStatement ps = con.prepareStatement(insert);
+				ps.setString(1, username); ps.setString(2, password); ps.setString(3, email);
 				//Run the query against the DB
 				ps.executeUpdate();
 				
-				out.println("User account has been successfully deleted."); %>
+				out.println("Customer representative account has been successfully created."); %>
 				
 				<form method="post" action="../adminHomePage.jsp">
     			<input type ="submit" value="Back" >
 
     			</form>
 				<%
-			} else {
-				out.println("Invalid username or password. Please try again."); %>
-				<button type="button" name="back" onclick="history.back()">Try Again.</button>
-				<%
-						
 			}
 		} catch (Exception e) {
 			//out.print(e);
-			out.println("Login Failed. Invalid login credentials.!");%>
+			out.println("Failed to make new representative");%>
 			<button type="button" name="back" onclick="history.back()">Try Again.</button>
 		<%
 		}

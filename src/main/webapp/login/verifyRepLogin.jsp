@@ -19,31 +19,28 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			//Get parameters from the HTML form at the index.jsp
-			String username = request.getParameter("username");			
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
 			
-			ResultSet login_info = stmt.executeQuery("select * from customerservicerep where username='"+username+"'");
-			if(login_info.next() && username != null && username.length() != 0) {
-				PreparedStatement ps = con.prepareStatement("delete from customerservicerep where username=?");
-				ps.setString(1, username);
-				//Run the query against the DB
-				ps.executeUpdate();
-				
-				out.println("User account has been successfully deleted."); %>
-				
-				<form method="post" action="../adminHomePage.jsp">
-    			<input type ="submit" value="Back" >
-
-    			</form>
+			ResultSet login_info = stmt.executeQuery("select * from customerservicerep where username='"+username+"' and password='"+password+"'");
+			
+			if(login_info.next()) {
+				if(username.length() != 0 && username != null && password.length() != 0 && password != null) {
+					session.setAttribute("user", username);
+					response.sendRedirect("../rep/representative_home.jsp");
+				} else {
+					out.println("Invalid credentials.");%>
+					<button type="button" name="back" onclick="history.back()">Try Again.</button>
 				<%
+				}
 			} else {
-				out.println("Invalid username or password. Please try again."); %>
+				out.println("Invalid credentials.");%>
 				<button type="button" name="back" onclick="history.back()">Try Again.</button>
-				<%
-						
+			<%
 			}
 		} catch (Exception e) {
 			//out.print(e);
-			out.println("Login Failed. Invalid login credentials.!");%>
+			out.println("Login Failed. Invalid login credentials");%>
 			<button type="button" name="back" onclick="history.back()">Try Again.</button>
 		<%
 		}

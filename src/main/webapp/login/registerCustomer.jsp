@@ -13,18 +13,24 @@
 	
 	<body>
 
-		Customer Representative Account Deletion
+		Customer Registration 
 							  
 	<br>
-		<form method="post" action="verifyRepDelete.jsp">
+		<form method="post" action="verifyCustomerReg.jsp">
 		<table>
 		<tr>    
 		<td>Username</td><td><input type="text" name="username"></td>
 		</tr>
+		<tr>
+		<td>Password</td><td><input type="text" name="password"></td>
+		</tr>
+		<tr>    
+		<td>Name</td><td><input type="text" name="name"></td>
+		</tr>
 		<tr><td>
 		<br>
 		</table>
-		<input type="submit" value="Delete Account"><input type="submit" value="Go Back" formaction = "../adminHomePage.jsp">
+		<input type="submit" value="Register"><button type="button" name="back" onclick="history.back()">Go Back</button>
 		</form>
 	<br>
 	

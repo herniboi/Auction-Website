@@ -13,18 +13,15 @@
 	
 	<body>
 
-		Customer Representative Account Deletion
+		Request Customer Account Deletion
 							  
 	<br>
-		<form method="post" action="verifyRepDelete.jsp">
+		<form method="post" action="verifyCustomerDelete.jsp">
 		<table>
 		<tr>    
 		<td>Username</td><td><input type="text" name="username"></td>
-		</tr>
-		<tr><td>
-		<br>
 		</table>
-		<input type="submit" value="Delete Account"><input type="submit" value="Go Back" formaction = "../adminHomePage.jsp">
+		<input type="submit" value="Delete Account"><input type="submit" value="Go Back" formaction = "../frontPage.jsp">
 		</form>
 	<br>
 	

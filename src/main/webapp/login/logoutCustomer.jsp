@@ -13,20 +13,10 @@
 	
 	<body>
 
-		Customer Representative Account Deletion
-							  
-	<br>
-		<form method="post" action="verifyRepDelete.jsp">
-		<table>
-		<tr>    
-		<td>Username</td><td><input type="text" name="username"></td>
-		</tr>
-		<tr><td>
-		<br>
-		</table>
-		<input type="submit" value="Delete Account"><input type="submit" value="Go Back" formaction = "../adminHomePage.jsp">
-		</form>
-	<br>
+	<%
+	session.invalidate();
+	response.sendRedirect("../frontPage.jsp");
+	%>
 	
 	
 
