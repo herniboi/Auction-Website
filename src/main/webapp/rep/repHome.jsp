@@ -52,7 +52,7 @@
 					<div class="card" style="width: 18rem;">
 						<div class="card-body">
 							<h5 class="card-title">Answer Questions</h5>
-							<form method="post" action="answer_home.jsp">
+							<form method="post" action="answerHomePage.jsp">
 								<input type="submit" value="Answer Questions Page">
 							</form>
 						</div>

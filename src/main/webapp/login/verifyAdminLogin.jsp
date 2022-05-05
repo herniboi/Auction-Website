@@ -29,7 +29,7 @@
 					session.setAttribute("admin", username);
 					
 					out.println("Login Success: " + username);
-					response.sendRedirect("../admin_home.jsp");
+					response.sendRedirect("../adminHomePage.jsp");
 				} else {
 					out.println("Invaid username or password.");%>
 					<button type="button" name="back" onclick="history.back()">Try Again.</button>

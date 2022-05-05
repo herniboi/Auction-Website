@@ -27,7 +27,7 @@
 			if(login_info.next()) {
 				if(username.length() != 0 && username != null && password.length() != 0 && password != null) {
 					session.setAttribute("user", username);
-					response.sendRedirect("../rep/representative_home.jsp");
+					response.sendRedirect("../rep/repHome.jsp");
 				} else {
 					out.println("Invalid credentials.");%>
 					<button type="button" name="back" onclick="history.back()">Try Again.</button>

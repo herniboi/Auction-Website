@@ -31,7 +31,7 @@
 			Statement stmt = con.createStatement();
 			ResultSet clothing_info = 
 					stmt.executeQuery(
-"select t1.item_id, t1.username, sum(t1.bid_value) as total, items.end_date, items.name, items.clothing_type from(select * from bids where bid_value in (select max(bid_value) from bids group by item_id) group by item_id) as t1 join items on t1.item_id = items.item_id where end_date < current_timestamp group by items.clothing_type");
+"select t1.item_id, t1.username, sum(t1.bid_value) as total, items.end_date, items.name, items.clothingType from(select * from bids where bid_value in (select max(bid_value) from bids group by item_id) group by item_id) as t1 join items on t1.item_id = items.item_id where end_date < current_timestamp group by items.clothing_type");
 			while(clothing_info.next()) {
 				%>
 				<tr>
@@ -201,8 +201,8 @@
 			%></table><%
 		} catch (Exception e) {
 			out.print(e);
-			//out.println("an error has occurred.");%>
-			<button type="button" name="back" onclick="history.back()">Try Again.</button>
+			//out.println("An error has occurred.");%>
+			<button type="button" name="back" onclick="history.back()">Please try again.</button>
 		<%
 		}
 		

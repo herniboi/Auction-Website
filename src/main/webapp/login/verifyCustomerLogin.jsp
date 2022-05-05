@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="main.java.com.cs336.pkg.*"%>
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <!--Import some libraries that have classes that we need -->
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
@@ -30,7 +30,7 @@
 					session.setAttribute("user", username);
 					
 					out.println("Login Success: " + username);
-					//response.sendRedirect("../auction/auction_home.jsp");
+					response.sendRedirect("../auction/auctionHome.jsp");
 				} else {
 					out.println("Invaid username or password.");%>
 					<button type="button" name="back" onclick="history.back()">Try Again.</button>
