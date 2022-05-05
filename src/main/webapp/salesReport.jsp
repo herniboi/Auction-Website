@@ -63,124 +63,188 @@
 			userInfo.close();
 			%>
 			</table>
-			<h3>Hats</h3>
+			<h3>Tops</h3>
 			<table border="2">
 			<tr>
-			<td>Item Type</td>
+			<td>Clothing Type</td>
 			<td>Earnings</td>
 			<%
-			ResultSet hat_type_info = 
+			ResultSet topsTypeInfo = 
 					stmt.executeQuery(
-					"select sum(price) as total, hats.type from (select max(bidValue) price, bids.itemId from bids, items where bids.itemId=items.itemId and endDate < current_timestamp() group by bids.itemId) as t1, hats where t1.itemId = hats.itemId group by hats.type");	
-			while(hat_type_info.next()) {
+					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, clothing where bids.itemId=clothing.itemId and endDate < current_timestamp() group by bids.itemId) as t1, tops where t1.itemId = tops.itemId group by clothing.type");	
+			while(topsTypeInfo.next()) {
 				%>
 				<tr>
-				<td><%=hat_type_info.getString("type") %></td>
-				<td><%=hat_type_info.getString("total") %></td>
+				<td><%=topsTypeInfo.getString("type") %></td>
+				<td><%=topsTypeInfo.getString("total") %></td>
 				</tr>
 				<%
 			}
-			hat_type_info.close();
+			topsTypeInfo.close();
 			%>
 			</table>
-			<h3>Shirts</h3>
+			<h3>Bottoms</h3>
 			<table border="2">
 			<tr>
-			<td>Item Type</td>
+			<td>Clothing Type</td>
 			<td>Earnings</td>
 			<%
-			ResultSet shirt_type_info = 
+			ResultSet bottomsTypeInfo = 
 					stmt.executeQuery(
-					"select sum(price) as total, shirts.type from (select max(bidValue) price, bids.itemId from bids, items where bids.itemId=items.itemId and endDate < current_timestamp() group by bids.itemId) as t1, shirts where t1.itemId = shirts.itemId group by shirts.type");	
-			while(shirt_type_info.next()) {
+					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, clothing where bids.itemId=clothing.itemId and endDate < current_timestamp() group by bids.itemId) as t1, bottoms where t1.itemId = bottoms.itemId group by clothing.type");	
+			while(bottomsTypeInfo.next()) {
 				%>
 				<tr>
-				<td><%=shirt_type_info.getString("type") %></td>
-				<td><%=shirt_type_info.getString("total") %></td>
+				<td><%=bottomsTypeInfo.getString("type") %></td>
+				<td><%=bottomsTypeInfo.getString("total") %></td>
 				</tr>
 				<%
 			}
-			shirt_type_info.close();
+			bottomsTypeInfo.close();
 			%>
+
 			</table>
-			<h3>Shoes</h3>
+			<h3>Socks</h3>
 			<table border="2">
 			<tr>
-			<td>Item Type</td>
+			<td>Clothing Type</td>
 			<td>Earnings</td>
 			<%
-			ResultSet shoe_type_info = 
+			ResultSet socksTypeInfo = 
 					stmt.executeQuery(
-					"select sum(price) as total, shoes.type from (select max(bidValue) price, bids.itemId from bids, items where bids.itemId=items.itemId and endDate < current_timestamp() group by bids.itemId) as t1, shoes where t1.itemId = shoes.itemId group by shoes.type");	
-			while(shoe_type_info.next()) {
+					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, items where bids.itemId=items.itemId and endDate < current_timestamp() group by bids.itemId) as t1, socks where t1.itemId = socks.itemId group by clothing.type");	
+			while(socksTypeInfo.next()) {
 				%>
 				<tr>
-				<td><%=shoe_type_info.getString("type") %></td>
-				<td><%=shoe_type_info.getString("total") %></td>
+				<td><%=socksTypeInfo.getString("type") %></td>
+				<td><%=socksTypeInfo.getString("total") %></td>
 				</tr>
 				<%
 			}
-			shoe_type_info.close();
+			socksTypeInfo.close();
 			%>
+
+</table>
+			<h3>Socks</h3>
+			<table border="2">
+			<tr>
+			<td>Clothing Type</td>
+			<td>Earnings</td>
+			<%
+			ResultSet socksTypeInfo = 
+					stmt.executeQuery(
+					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, items where bids.itemId=items.itemId and endDate < current_timestamp() group by bids.itemId) as t1, socks where t1.itemId = socks.itemId group by clothing.type");	
+			while(socksTypeInfo.next()) {
+				%>
+				<tr>
+				<td><%=socksTypeInfo.getString("type") %></td>
+				<td><%=socksTypeInfo.getString("total") %></td>
+				</tr>
+				<%
+			}
+			socksTypeInfo.close();
+			%>
+
+			</table>
+			<h3>OnePieces</h3>
+			<table border="2">
+			<tr>
+			<td>Clothing Type</td>
+			<td>Earnings</td>
+			<%
+			ResultSet onePiecesTypeInfo = 
+					stmt.executeQuery(
+					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, items where bids.itemId=items.itemId and endDate < current_timestamp() group by bids.itemId) as t1, onePieces where t1.itemId = onePieces.itemId group by clothing.type");	
+			while(onePiecesTypeInfo.next()) {
+				%>
+				<tr>
+				<td><%=onePiecesTypeInfo.getString("type") %></td>
+				<td><%=onePiecesTypeInfo.getString("total") %></td>
+				</tr>
+				<%
+			}
+			onePiecesTypeInfo.close();
+			%>
+
 			</table>
 			<h3>Best Selling Items</h3>
-			<h4>Shirts</h4>
+			<h4>Tops</h4>
 			<table border="2">
 			<tr>
-			<td>Item Type</td>
+			<td>Clothing Type</td>
 			<td>Units Sold</td>
 			<%
-			ResultSet shirtb_type_info = 
+			ResultSet tops2TypeInfo = 
 					stmt.executeQuery(
-					"select count(price) as units, shirts.type from (select max(bidValue) price, itemId from bids) as t1, shirts group by shirts.type limit 5");	
-			while(shirtb_type_info.next()) {
+					"select count(price) as units, clothing.type from (select max(bidValue) price, itemId from bids) as t1, tops group by clothing.type limit 5");	
+			while(tops2TypeInfo.next()) {
 				%>
 				<tr>
-				<td><%=shirtb_type_info.getString("type") %></td>
-				<td><%=shirtb_type_info.getString("units") %></td>
+				<td><%=tops2TypeInfo.getString("type") %></td>
+				<td><%=tops2TypeInfo.getString("units") %></td>
 				</tr>
 				<%
 			}
-			shirtb_type_info.close();
+			tops2TypeInfo.close();
 			%></table>
-			<h4>Shoes</h4>
+			<h4>Bottoms</h4>
 			<table border="2">
 			<tr>
-			<td>Item Type</td>
+			<td>Clothing Type</td>
 			<td>Units Sold</td>
 			<%
-			ResultSet shoesb_type_info = 
+			ResultSet bottoms2TypeInfo = 
 					stmt.executeQuery(
-					"select count(price) as units, shoes.type from (select max(bidValue) price, itemId from bids) as t1, shoes group by shoes.type limit 5");	
-			while(shoesb_type_info.next()) {
+					"select count(price) as units, clothing.type from (select max(bidValue) price, itemId from bids) as t1, bottoms group by clothing.type limit 5");	
+			while(bottoms2TypeInfo.next()) {
 				%>
 				<tr>
-				<td><%=shoesb_type_info.getString("type") %></td>
-				<td><%=shoesb_type_info.getString("units") %></td>
+				<td><%=bottoms2TypeInfo.getString("type") %></td>
+				<td><%=bottoms2TypeInfo.getString("units") %></td>
 				</tr>
 				<%
 			}
-			shoesb_type_info.close();
+			bottoms2TypeInfo.close();
 			%></table>
-			<h4>Hats</h4>
+			<h4>Socks</h4>
 			<table border="2">
 			<tr>
-			<td>Item Type</td>
+			<td>Clothing Type</td>
 			<td>Units Sold</td>
 			<%
-			ResultSet hatsb_type_info = 
+			ResultSet socks2TypeInfo = 
 					stmt.executeQuery(
-					"select count(price) as units, hats.type from (select max(bidValue) price, itemId from bids) as t1, hats group by hats.type limit 5");	
-			while(hatsb_type_info.next()) {
+					"select count(price) as units, clothing.type from (select max(bidValue) price, itemId from bids) as t1, socks group by clothing.type limit 5");	
+			while(socks2TypeInfo.next()) {
 				%>
 				<tr>
-				<td><%=hatsb_type_info.getString("type") %></td>
-				<td><%=hatsb_type_info.getString("units") %></td>
+				<td><%=socks2TypeInfo.getString("type") %></td>
+				<td><%=socks2TypeInfo.getString("units") %></td>
 				</tr>
 				<%
 			}
-			hatsb_type_info.close();
+			socks2TypeInfo.close();
 			%></table>
+			<h4>OnePieces</h4>
+			<table border="2">
+			<tr>
+			<td>Clothing Type</td>
+			<td>Units Sold</td>
+			<%
+			ResultSet onePieces2TypeInfo = 
+					stmt.executeQuery(
+					"select count(price) as units, clothing.type from (select max(bidValue) price, itemId from bids) as t1, onePieces group by clothing.type limit 5");	
+			while(onePieces2TypeInfo.next()) {
+				%>
+				<tr>
+				<td><%=onePieces2TypeInfo.getString("type") %></td>
+				<td><%=onePieces2TypeInfo.getString("units") %></td>
+				</tr>
+				<%
+			}
+			onePieces2TypeInfo.close();
+			%>
+			</table>
 			<h3>Best Buyers</h3>
 			<table border="2">
 			<tr>
@@ -202,7 +266,7 @@
 		} catch (Exception e) {
 			out.print(e);
 			//out.println("An error has occurred.");%>
-			<button type="button" name="back" onclick="history.back()">Please try again.</button>
+			<button type="button" name="back" onclick="history.back()">Try again.</button>
 		<%
 		}
 		

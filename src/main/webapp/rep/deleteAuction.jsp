@@ -28,9 +28,10 @@
 					<tr>
 						<td><select id="clothingType" name="clothingType"
 							form="deleteAuction">
-								<option value="shirts">Shirts</option>
-								<option value="shoes">Shoes</option>
-								<option value="hats">Hats</option>
+							<option value="tops">Tops</option>
+							<option value="socks">Socks</option>
+							<option value="onePieces">One Pieces</option>
+							<option value="bottoms">Bottoms</option>
 						</select></td>
 					</tr>
 				</table>
@@ -49,9 +50,10 @@
 					<tr>
 						<td><select id="clothingType" name="clothingType"
 							form="deleteBid">
-								<option value="shirts">Shirts</option>
-								<option value="shoes">Shoes</option>
-								<option value="hats">Hats</option>
+								<option value="tops">Tops</option>
+								<option value="socks">Socks</option>
+								<option value="onePieces">One Pieces</option>
+								<option value="bottoms">Bottoms</option>
 						</select></td>
 					</tr>
 				</table>
@@ -79,7 +81,7 @@
 					Connection con = db.getConnection();
 					//Create a SQL statement
 					Statement stmt = con.createStatement();
-					ResultSet clothingInfo = stmt.executeQuery("select * from items");
+					ResultSet clothingInfo = stmt.executeQuery("select * from clothing");
 					while (clothingInfo.next()) {
 				%>
 			

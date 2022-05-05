@@ -70,6 +70,7 @@ INSERT INTO `questions` (question, questionId, username, answer) values
 ("How do I create a new account?", 0, "user1", "Go to the home page and click on the register button under the customer header."),
 ("How do I sell an item?", 1, "user2", "");
 UNLOCK TABLES;
+
 --
 -- Table structure for table `clothing`
 --
@@ -83,12 +84,14 @@ CREATE TABLE `clothing` (
   `name` varchar(50) DEFAULT NULL,
   `minWin` integer DEFAULT NULL,
   `clothingType` varchar(50) DEFAULT NULL,
+  `clothingTypeID` varchar(10) DEFAULT NULL,
   `size` varchar(10) DEFAULT NULL,
   `quantity` integer DEFAULT NULL,
   `color` varchar(40) DEFAULT NULL,
   `gender` char(1) DEFAULT NULL,
   `rating` integer DEFAULT NULL,
   `username` varchar(50) NOT NULL DEFAULT '',
+  `type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`itemId`, `username`),
 FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -109,13 +112,14 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tops`;
 CREATE TABLE `tops` (
   `itemId` integer NOT NULL DEFAULT 0,
+  `clothingType` varchar(50) as "tops" persisted,
   FOREIGN KEY (`itemId`) REFERENCES `clothing` (`itemId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Dumping data for table `tops`
 --
 LOCK TABLES `tops` WRITE;
-INSERT INTO `tops` values (001);
+INSERT INTO `tops` (itemId) values (001);
 -- INSERT INTO `tops` (itemID) values(002);
 UNLOCK TABLES;
 --
