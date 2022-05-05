@@ -20,7 +20,7 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			//Get parameters from the HTML form at the index.jsp
-			String item_id = request.getParameter("item_id");
+			String itemId = request.getParameter("itemId");
 			
 			//name of user
 			String username = (String)session.getAttribute("user");
@@ -37,7 +37,7 @@
 			
 			
 			
-			<b>Item ID: <%=item_id%></b>
+			<b>Item ID: <%=itemId%></b>
 			</div>
 			
 			<hr noshade size="16">
@@ -45,23 +45,23 @@
 			<% 
 			
 			// query for current max bid
-			ResultSet current_bid = stmt.executeQuery("select max(bid_value) from bids where item_id='"+item_id+"'");
-			boolean bid_exists = false;
-			int current_bid_num = -1;
-			int current_user_max = -1;
-			if(current_bid.next() && current_bid.getInt("max(bid_value)") != 0) {
+			ResultSet currentBid = stmt.executeQuery("select max(bidValue) from bids where itemId='"+itemId+"'");
+			boolean bidExists = false;
+			int currentBidNum = -1;
+			int currentUserMax = -1;
+			if(currentBid.next() && currentBid.getInt("max(bidValue)") != 0) {
 				%>
 				<div align="center">
 				<table border="1">
 				<tr>
 					<th>Current Bid</th>
-					<td>$ <%=current_bid.getInt("max(bid_value)") %></td>
+					<td>$ <%=currentBid.getInt("max(bidValue)") %></td>
 				</tr>
 				</table>
 				</div>
 				<% 
-				bid_exists = true;
-				current_bid_num = current_bid.getInt("max(bid_value)");
+				bidExists = true;
+				currentBidNum = currentBid.getInt("max(bidValue)");
 			} else {
 				%>
 				<div align="center">
@@ -73,29 +73,29 @@
 				</table>
 				</div>
 				<% 
-				bid_exists = false;
+				bidExists = false;
 			}
-			current_bid.close();			
+			currentBid.close();			
 			
 			// query for user bid
 			
-			ResultSet user_bid = stmt.executeQuery("select * from bids where bid_value in (	select max(bid_value) from bids where item_id = '"+item_id+"' and username='"+username+"' group by item_id)and item_id = '"+item_id+"' and username='"+username+"'");
-			int current_user_bid = -1;
-			boolean has_bid = false;
-			if(user_bid.next() && user_bid.getInt("bid_value") != 0) {
+			ResultSet userBid = stmt.executeQuery("select * from bids where bidValue in (	select max(bidValue) from bids where itemId = '"+itemId+"' and username='"+username+"' group by itemId)and itemId = '"+itemId+"' and username='"+username+"'");
+			int currentUserBid = -1;
+			boolean hasBid = false;
+			if(userBid.next() && userBid.getInt("bidValue") != 0) {
 				%>
 				<div align="center">
 				<table border="1">
 				<tr>
 					<th>User Bid</th>
-					<td>$ <%=user_bid.getInt("bid_value") %></td>
+					<td>$ <%=userBid.getInt("bidValue") %></td>
 				</tr>
 				</table>
 				</div>
 				<% 
-				has_bid = true;
-				current_user_bid = user_bid.getInt("bid_value");
-				current_user_max = user_bid.getInt("max_bid");
+				hasBid = true;
+				currentUserBid = userBid.getInt("bidValue");
+				currentUserMax = userBid.getInt("maxBid");
 			} else {
 				%>
 				<div align="center">
@@ -107,17 +107,17 @@
 				</table>
 				</div>
 				<% 
-				has_bid = false;
+				hasBid = false;
 			}
-			if(bid_exists) {
-				if(has_bid) {
+			if(bidExists) {
+				if(hasBid) {
 					// condition #1 - the user is the highest bid
 					// condition #2 - the user got outbidded
-					if(current_user_bid >= current_bid_num) {
+					if(currentUserBid >= currentBidNum) {
 						%> 
 						<div align="center">
 						<b><br>You currently have the highest bid on this item.</b>
-						<b><br>Your maximum auto-bid is: $<%=current_user_max  %> </b>
+						<b><br>Your maximum auto-bid is: $<%=currentUserMax  %> </b>
 						</div>
 						<% 
 						
@@ -143,7 +143,7 @@
 				</div>
 				<% 
 			}
-			user_bid.close();
+			userBid.close();
 			
 			%>
 			<div align="center">

@@ -27,17 +27,17 @@
 		Connection con = db.getConnection();  
 		
 		Statement stmt = con.createStatement(); 
-		String sql = "select clothing_type from items where items.item_id =" + itemid + " and items.end_date > now();";
+		String sql = "select clothingType from items where items.itemId =" + itemid + " and items.endDate > now();";
 		System.out.println(sql);
 		ResultSet result = stmt.executeQuery(sql);
 		result.next(); 
-		String clothing_type = result.getString("clothing_type");
-		sql = "select type from " + clothing_type + " where item_id = " + itemid + ";";
+		String clothingType = result.getString("clothingType");
+		sql = "select type from " + clothingType + " where itemId = " + itemid + ";";
 		System.out.println(sql);
 		result = stmt.executeQuery(sql);
 		result.next(); 
 		String type = result.getString("type");
-		sql = "select * from " + clothing_type + " where type = '" + type + "' and item_id != " + itemid + ";";
+		sql = "select * from " + clothingType + " where type = '" + type + "' and itemId != " + itemid + ";";
 		
 		result = stmt.executeQuery(sql);
 		
@@ -48,7 +48,7 @@
 		while(result.next()){
 			%>
 			<tr>
-			<td><%=result.getInt("item_id") %></td>
+			<td><%=result.getInt("itemId") %></td>
 			<td><%=result.getString("size") %></td>
 			<td><%=result.getString("gender") %></td>
 			<td><%=result.getString("color") %></td>
@@ -63,7 +63,7 @@
 		<form method="post" action="../auction/requestItem.jsp">
 		<table>
 		<tr>    
-		<td>Item ID</td><td><input type="text" name="item_id"> <input type="submit" value="Access Item Page"> </td> 
+		<td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
 		</tr>
 		<tr><td>
 		</table>

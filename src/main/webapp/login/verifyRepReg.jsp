@@ -24,8 +24,8 @@
 			String email = request.getParameter("email");
 			
 			
-			ResultSet login_info = stmt.executeQuery("select * from customerservicerep where username='"+username+"'");
-			if(login_info.next() && username != null && username.length() != 0) {
+			ResultSet loginInfo = stmt.executeQuery("select * from customerservicerep where username='"+username+"'");
+			if(loginInfo.next() && username != null && username.length() != 0) {
 				out.println("The username " + username + " already exists within the database. Please try again."); %>
 				<button type="button" name="back" onclick="history.back()">Try Again.</button>
 				<% 

@@ -21,12 +21,12 @@
 			
 			// getting the parameters to insert
 			// to insert into items
-			String item_id = request.getParameter("item_id");
-			String clothing_type = request.getParameter("clothing_type");
-			PreparedStatement ps1 = con.prepareStatement("delete from "+clothing_type+" where item_id=?");
-			ps1.setString(1, item_id);
-			PreparedStatement ps2 = con.prepareStatement("delete from items where item_id=?");
-			ps2.setString(1, item_id);
+			String itemId = request.getParameter("itemId");
+			String clothingType = request.getParameter("clothingType");
+			PreparedStatement ps1 = con.prepareStatement("delete from "+clothingType+" where itemId=?");
+			ps1.setString(1, itemId);
+			PreparedStatement ps2 = con.prepareStatement("delete from items where itemId=?");
+			ps2.setString(1, itemId);
 			PreparedStatement pre = con.prepareStatement("SET FOREIGN_KEY_CHECKS=0");
 			PreparedStatement post = con.prepareStatement("SET FOREIGN_KEY_CHECKS=1");
 			pre.executeUpdate();

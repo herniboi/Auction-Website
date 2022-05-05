@@ -55,19 +55,19 @@ RU Clothing Seller Page
         
         //Create a SQL statement
         Statement stmt = con.createStatement();
-        ResultSet items_info = stmt.executeQuery("select * from items where username='"+user+"' and end_date > now()");
-        while(items_info.next()) {
+        ResultSet clothingInfo = stmt.executeQuery("select * from items where username='"+user+"' and endDate > now()");
+        while(clothingInfo.next()) {
             %>
             <tr>
-            <td><%=items_info.getInt("item_id") %></td>
-            <td><%=items_info.getString("name") %></td>
-            <td><%=items_info.getString("clothing_type") %></td>
-            <td><%=items_info.getInt("initial_price") %></td>
-            <td><%=items_info.getInt("increment") %></td>
-            <td><%=items_info.getTimestamp("start_date") %></td>
-            <td><%=items_info.getTimestamp("end_date") %></td>
-            <td><%=items_info.getInt("rating") %></td>
-            <td><%=items_info.getString("username") %></td>
+            <td><%=clothingInfo.getInt("itemId") %></td>
+            <td><%=clothingInfo.getString("name") %></td>
+            <td><%=clothingInfo.getString("clothingType") %></td>
+            <td><%=clothingInfo.getInt("initialPrice") %></td>
+            <td><%=clothingInfo.getInt("increment") %></td>
+            <td><%=clothingInfo.getTimestamp("startDate") %></td>
+            <td><%=clothingInfo.getTimestamp("endDate") %></td>
+            <td><%=clothingInfo.getInt("rating") %></td>
+            <td><%=clothingInfo.getString("username") %></td>
             </tr>
 <%
         }

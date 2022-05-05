@@ -46,11 +46,11 @@
 			while(result.next()){
 %>
 				<tr>
-				<td><%=result.getInt("item_id") %></td>
+				<td><%=result.getInt("itemId") %></td>
 				<td><%=result.getString("name") %></td>
-				<td><%=result.getString("clothing_type") %></td>
-				<td><%=result.getDate("start_date") %></td>
-				<td><%=result.getDate("end_date") %></td>
+				<td><%=result.getString("clothingType") %></td>
+				<td><%=result.getDate("startDate") %></td>
+				<td><%=result.getDate("endDate") %></td>
 				<td><%=result.getString("username") %></td>
 				<td><%=result.getInt("rating") %></td>
 				</tr>
@@ -64,7 +64,7 @@
 			<form method="post" action="../auction/requestItem.jsp">
 			<table>
 			<tr>    
-			<td>Item ID</td><td><input type="text" name="item_id"> <input type="submit" value="Access Item Page"> </td> 
+			<td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
 			</tr>
 			<tr><td>
 			</table>
@@ -75,7 +75,7 @@
 			<form method="post" action="removeAlerts.jsp">
 			<table>
 			<tr>    
-			<td>Item Name</td><td><input type="text" name="item_name"> <input type="submit" value="Remove Alert"> </td> 
+			<td>Item Name</td><td><input type="text" name="itemName"> <input type="submit" value="Remove Alert"> </td> 
 			</tr>
 			<tr><td>
 			</table>

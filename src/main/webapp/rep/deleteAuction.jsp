@@ -19,15 +19,15 @@
 		<div align='center'>
 			<hr noshade size="16">
 			Delete Auction
-			<form action="verifyAuctionDelete.jsp" id="delete_auction">
+			<form action="verifyAuctionDelete.jsp" id="deleteAuction">
 				<table>
 					<tr>
-						<td><label for="item_id">Item ID:</label><input type="text"
-							id="item_id" name="item_id"></td>
+						<td><label for="itemId">Item ID:</label><input type="text"
+							id="itemId" name="itemId"></td>
 					</tr>
 					<tr>
-						<td><select id="clothing_type" name="clothing_type"
-							form="delete_auction">
+						<td><select id="clothingType" name="clothingType"
+							form="deleteAuction">
 								<option value="shirts">Shirts</option>
 								<option value="shoes">Shoes</option>
 								<option value="hats">Hats</option>
@@ -40,15 +40,15 @@
 		<div align='center'>
 			<hr noshade size="16">
 			View Bids
-			<form action="deleteBid.jsp" id="delete_bid">
+			<form action="deleteBid.jsp" id="deleteBid">
 				<table>
 					<tr>
-						<td><label for="item_id">Item ID:</label><input type="text"
-							id="item_id" name="item_id"></td>
+						<td><label for="itemId">Item ID:</label><input type="text"
+							id="itemId" name="itemId"></td>
 					</tr>
 					<tr>
-						<td><select id="clothing_type" name="clothing_type"
-							form="delete_bid">
+						<td><select id="clothingType" name="clothingType"
+							form="deleteBid">
 								<option value="shirts">Shirts</option>
 								<option value="shoes">Shoes</option>
 								<option value="hats">Hats</option>
@@ -79,24 +79,24 @@
 					Connection con = db.getConnection();
 					//Create a SQL statement
 					Statement stmt = con.createStatement();
-					ResultSet items_info = stmt.executeQuery("select * from items");
-					while (items_info.next()) {
+					ResultSet clothingInfo = stmt.executeQuery("select * from items");
+					while (clothingInfo.next()) {
 				%>
 			
 			<tr>
-				<td><%=items_info.getInt("item_id")%></td>
-				<td><%=items_info.getString("name")%></td>
-				<td><%=items_info.getString("clothing_type")%></td>
-				<td><%=items_info.getInt("initial_price")%></td>
-				<td><%=items_info.getInt("increment")%></td>
-				<td><%=items_info.getTimestamp("start_date")%></td>
-				<td><%=items_info.getTimestamp("end_date")%></td>
-				<td><%=items_info.getInt("rating")%></td>
-				<td><%=items_info.getString("username")%></td>
+				<td><%=clothingInfo.getInt("itemId")%></td>
+				<td><%=clothingInfo.getString("name")%></td>
+				<td><%=clothingInfo.getString("clothingType")%></td>
+				<td><%=clothingInfo.getInt("initialPrice")%></td>
+				<td><%=clothingInfo.getInt("increment")%></td>
+				<td><%=clothingInfo.getTimestamp("startDate")%></td>
+				<td><%=clothingInfo.getTimestamp("endDate")%></td>
+				<td><%=clothingInfo.getInt("rating")%></td>
+				<td><%=clothingInfo.getString("username")%></td>
 			</tr>
 			<%
 			}
-			items_info.close();
+			clothingInfo.close();
 			ResultSet get_current_time = stmt.executeQuery("SELECT CURRENT_TIMESTAMP");
 			get_current_time.next();
 			out.println(get_current_time.getTimestamp("CURRENT_TIMESTAMP"));

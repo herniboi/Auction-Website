@@ -21,7 +21,7 @@
 			
 			// getting the parameters to insert
 			// to insert into items
-			int item_id = 0;
+			int itemId = 0;
 			String question = request.getParameter("question");
 			String user = (String) session.getAttribute("user");
 	
@@ -31,21 +31,21 @@
 			if(question != null && question.length() != 0) { // minimum must be >= initial
 				
 				// find the item id
-				ResultSet find_item_id = stmt.executeQuery("select max(question_id) from questions");
+				ResultSet findItemId = stmt.executeQuery("select max(questionId) from questions");
 				// means that we found a value item id
-				if(find_item_id.next() && find_item_id.getInt("max(question_id)") != 0) {
-					item_id = find_item_id.getInt("max(question_id)") + 1;
+				if(findItemId.next() && findItemId.getInt("max(questionId)") != 0) {
+					itemId = findItemId.getInt("max(questionId)") + 1;
 				} else {
-					item_id = 1;
+					itemId = 1;
 				}
 				
-				// close the connection for find_item_id
-				find_item_id.close();
+				// close the connection for findItemId
+				findItemId.close();
 						
 				// insert into items ()
-				String insert = "insert into questions(question_id, question, username)" + "VALUES (?, ?, ?)";
+				String insert = "insert into questions(questionId, question, username)" + "VALUES (?, ?, ?)";
 				PreparedStatement ps = con.prepareStatement(insert);
-				ps.setInt(1, item_id);
+				ps.setInt(1, itemId);
 				ps.setString(2, question);
 				ps.setString(3, user);
 				ps.executeUpdate();

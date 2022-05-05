@@ -55,19 +55,19 @@ RU CLothing Seller Old Auction Page
         
         //Create a SQL statement
         Statement stmt = con.createStatement();
-        ResultSet items_info = stmt.executeQuery("select * from items where username='"+user+"' and now() > end_date");
-        while(items_info.next()) {
+        ResultSet clothingInfo = stmt.executeQuery("select * from items where username='"+user+"' and now() > endDate");
+        while(clothingInfo.next()) {
             %>
             <tr>
-            <td><%=items_info.getInt("item_id") %></td>
-            <td><%=items_info.getString("name") %></td>
-            <td><%=items_info.getString("clothing_type") %></td>
-            <td><%=items_info.getInt("initial_price") %></td>
-            <td><%=items_info.getInt("increment") %></td>
-            <td><%=items_info.getTimestamp("start_date") %></td>
-            <td><%=items_info.getTimestamp("end_date") %></td>
-            <td><%=items_info.getInt("rating") %></td>
-            <td><%=items_info.getString("username") %></td>
+            <td><%=clothingInfo.getInt("itemId") %></td>
+            <td><%=clothingInfo.getString("name") %></td>
+            <td><%=clothingInfo.getString("clothingType") %></td>
+            <td><%=clothingInfo.getInt("initialPrice") %></td>
+            <td><%=clothingInfo.getInt("increment") %></td>
+            <td><%=clothingInfo.getTimestamp("startDate") %></td>
+            <td><%=clothingInfo.getTimestamp("endDate") %></td>
+            <td><%=clothingInfo.getInt("rating") %></td>
+            <td><%=clothingInfo.getString("username") %></td>
             </tr>
 <%
         }
@@ -88,7 +88,7 @@ RU CLothing Seller Old Auction Page
     <form method="post" action="../auction/requestItem.jsp">
     <table>
     <tr>    
-    <td>Item ID</td><td><input type="text" name="item_id"> <input type="submit" value="Access Item Page"> </td> 
+    <td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
     </tr>
     <tr><td>
     </table>

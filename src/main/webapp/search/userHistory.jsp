@@ -34,7 +34,7 @@
 		%>
 		<tr>
 		<td><%= result.getString("username") %></td>
-		<td><%= result.getInt("user_id") %></td>
+		<td><%= result.getInt("userId") %></td>
 		<td><%= result.getInt("rating") %></td>
 		</tr>
 		</table>
@@ -57,10 +57,10 @@
 		while(result.next()){
 			%>
 			<tr>
-			<td><%= result.getInt("item_id") %></td>
-			<td><%= result.getInt("bid_value") %></td>
-			<td><%= result.getInt("max_bid") %></td>
-			<td><%= result.getDate("date_time") %></td>
+			<td><%= result.getInt("itemId") %></td>
+			<td><%= result.getInt("bidValue") %></td>
+			<td><%= result.getInt("maxBid") %></td>
+			<td><%= result.getDate("dateTime") %></td>
 			</tr>
 			<% 
 		}
@@ -88,11 +88,11 @@
 		while(result.next()){
 			%>
 			<tr>
-			<td><%= result.getInt("item_id") %></td>
-			<td><%= result.getDate("start_date") %></td>
-			<td><%= result.getDate("end_date") %></td>
+			<td><%= result.getInt("itemId") %></td>
+			<td><%= result.getDate("startDate") %></td>
+			<td><%= result.getDate("endDate") %></td>
 			<td><%= result.getString("name") %></td>
-			<td><%= result.getString("clothing_type") %></td>
+			<td><%= result.getString("clothingType") %></td>
 			</tr>
 			<% 
 		}

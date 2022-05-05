@@ -21,11 +21,11 @@
 			//Get parameters from the HTML form at the index.jsp
 			String username = request.getParameter("username");
 			
-			ResultSet login_info = stmt.executeQuery("select * from users where username='"+username+"'");
+			ResultSet loginInfo = stmt.executeQuery("select * from users where username='"+username+"'");
 			PreparedStatement pre = con.prepareStatement("SET FOREIGN_KEY_CHECKS=0");
 			PreparedStatement post = con.prepareStatement("SET FOREIGN_KEY_CHECKS=1");
 			pre.executeUpdate();
-			if(login_info.next() && username != null && username.length() != 0) {
+			if(loginInfo.next() && username != null && username.length() != 0) {
 				PreparedStatement ps = con.prepareStatement("delete from users where username=?");
 				ps.setString(1, username);
 				//Run the query against the DB

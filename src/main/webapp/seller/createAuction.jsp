@@ -30,29 +30,30 @@ Item Information
 
 <%// create the form in which the seller enters in the options to create an item %>
 <div align="center">
-	<form action="../seller/verifyCreateAuction.jsp" id="create_auction">
+	<form action="../seller/verifyCreateAuction.jsp" id="createAuction">
 		<table>
-		<tr><td><label for="item_name">Name:</label><input type="text" id="item_name" name="name"></td></tr>
-		<tr><td><label for="item_initial_price">Initial Amount:</label><input type="text" id="item_initial_price" name="initial_price"></td></tr>
-		<tr><td><label for="item_increment_price">Increment Amount:</label><input type="text" id="item_increment_price" name="increment"></td></tr>
-		<tr><td><label for="item_size">Size: </label><input type="text" id="item_size" name="size"></td></tr>
-		<tr><td><label for="item_color">Color: </label><input type="text" id="item_color" name="color"></td></tr>
-		<tr><td><label for="item_type">Type: </label><input type="text" id="item_type" name="type"></td></tr>
+		<tr><td><label for="clothingName">Name:</label><input type="text" id="clothingName" name="name"></td></tr>
+		<tr><td><label for="clothingInitialPrice">Initial Amount:</label><input type="text" id="clothingInitialPrice" name="initialPrice"></td></tr>
+		<tr><td><label for="clothingIncrementPrice">Increment Amount:</label><input type="text" id="clothingIncrementPrice" name="increment"></td></tr>
+		<tr><td><label for="clothingSize">Size: </label><input type="text" id="clothingSize" name="size"></td></tr>
+		<tr><td><label for="clothingColor">Color: </label><input type="text" id="clothingColor" name="color"></td></tr>
+		<tr><td><label for="clothingType">Type: </label><input type="text" id="clothingType" name="type"></td></tr>
 		<tr><td><br></br></td></tr>
-		<tr><td>(case sensitive: Male, Female)</td></tr>
-		<tr><td><label for="item_gender">Gender: </label><input type="text" id="item_gender" name="gender"></td></tr>
+		<tr><td>(case sensitive: M, F, U)</td></tr>
+		<tr><td><label for="clothingGender">Gender: </label><input type="text" id="clothingGender" name="gender"></td></tr>
 		<tr><td><br></br></td></tr>
 		<tr><td>(minimum win must >= initial price)</td></tr>
 		<tr><td>(set minimum to 0 if no reserve)</td></tr>
-		<tr><td><label for="item_min">Minimum Win: </label><input type="text" id="item_min" name="minimum"></td></tr>
+		<tr><td><label for="clothingMin">Minimum Win: </label><input type="text" id="clothingMin" name="minimum"></td></tr>
 		<tr><td><br></br></td></tr>
 		<tr><td>(time format: YYYY-MM-DD HH:MM:SS)</td></tr>
-		<tr><td><label for="item_end_date">End-Date: </label><input type="text" id="item_end_date" name="end_date"></td></tr>
+		<tr><td><label for="clothingEndDate">End-Date: </label><input type="text" id="clothingEndDate" name="endDate"></td></tr>
 		
-		<tr><td><select id="clothing_type" name="clothing_type" form="create_auction">
-  			<option value="shirts">Shirts</option>
-  			<option value="shoes">Shoes</option>
-  			<option value="hats">Hats</option>
+		<tr><td><select id="clothingType" name="clothingType" form="createAuction">
+  			<option value="tops">Tops</option>
+  			<option value="bottoms">Bottoms</option>
+  			<option value="socks">Socks</option>
+			<option value="onePieces">OnePieces</option>
 		</select></td></tr>
 		</table>
 		<input type="submit" value="Submit">

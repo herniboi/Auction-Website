@@ -20,33 +20,33 @@
 		Statement stmt = con.createStatement();
 		
 		//get values from buyer page bid attempt
-		String set_user = (String)session.getAttribute("user"); 
-		String item_ids = request.getParameter("item_id");
-		int item_id = Integer.valueOf(item_ids);
-		ResultSet get_init_price = stmt.executeQuery("select * from items where item_id = '"+item_id+"'");
-		int set_bid = 0;
-		int set_max = 0;
-		if (get_init_price.next()){
-			set_bid = get_init_price.getInt("initial_price");
-			set_max = get_init_price.getInt("initial_price");
+		String setUser = (String)session.getAttribute("user"); 
+		String itemIds = request.getParameter("itemId");
+		int itemId = Integer.valueOf(itemIds);
+		ResultSet getInitPrice = stmt.executeQuery("select * from items where itemId = '"+itemId+"'");
+		int setBid = 0;
+		int setMax = 0;
+		if (getInitPrice.next()){
+			setBid = getInitPrice.getInt("initialPrice");
+			setMax = getInitPrice.getInt("initialPrice");
 			
-			String insert = "INSERT INTO `bids` (item_id, username, bid_value, max_bid, date_time) " + "VALUES (?, ?, ?, ?, ?)";
+			String insert = "INSERT INTO `bids` (itemId, username, bidValue, maxBid, dateTime) " + "VALUES (?, ?, ?, ?, ?)";
 			PreparedStatement ps = con.prepareStatement(insert);
-			ps.setInt(1, item_id);
-			ps.setString(2, set_user);
-			ps.setInt(3, set_bid);
-			ps.setInt(4, set_max);
-			ResultSet get_current_time = stmt.executeQuery("SELECT CURRENT_TIMESTAMP");
-			if(get_current_time.next()){
-						ps.setTimestamp(5, get_current_time.getTimestamp("CURRENT_TIMESTAMP"));
+			ps.setInt(1, itemId);
+			ps.setString(2, setUser);
+			ps.setInt(3, setBid);
+			ps.setInt(4, setMax);
+			ResultSet getCurrentTime = stmt.executeQuery("SELECT CURRENT_TIMESTAMP");
+			if(getCurrentTime.next()){
+						ps.setTimestamp(5, getCurrentTime.getTimestamp("CURRENT_TIMESTAMP"));
 						// run the update.
 						ps.executeUpdate();
 			}
 			
-			insert = "INSERT INTO `watchlists` (item_id, username) " + "VALUES (?, ?)";
+			insert = "INSERT INTO `watchlists` (itemId, username) " + "VALUES (?, ?)";
 			ps = con.prepareStatement(insert);
-			ps.setInt(1, item_id);
-			ps.setString(2, set_user);
+			ps.setInt(1, itemId);
+			ps.setString(2, setUser);
 			
 			ps.executeUpdate();
 			out.println("You have successfully placed an initial bid on the item.");

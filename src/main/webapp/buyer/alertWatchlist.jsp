@@ -60,19 +60,19 @@ RU Clothing WatchLists
 			
 			
 			
-			ResultSet items_info = stmt.executeQuery("select * from items where item_id in (select item_id from watchlists where username='"+user+"') and current_timestamp < end_date;");
-			while(items_info.next()) {
+			ResultSet itemsInfo = stmt.executeQuery("select * from items where itemId in (select itemId from watchlists where username='"+user+"') and currentTimestamp < endDate;");
+			while(itemsInfo.next()) {
 				%>
 				<tr>
-				<td><%=items_info.getInt("item_id") %></td>
-				<td><%=items_info.getString("name") %></td>
-				<td><%=items_info.getString("clothing_type") %></td>
-				<td><%=items_info.getInt("initial_price") %></td>
-				<td><%=items_info.getInt("increment") %></td>
-				<td><%=items_info.getTimestamp("start_date") %></td>
-				<td><%=items_info.getTimestamp("end_date") %></td>
-				<td><%=items_info.getInt("rating") %></td>
-				<td><%=items_info.getString("username") %></td>
+				<td><%=itemsInfo.getInt("itemId") %></td>
+				<td><%=itemsInfo.getString("name") %></td>
+				<td><%=itemsInfo.getString("clothingType") %></td>
+				<td><%=itemsInfo.getInt("initialPrice") %></td>
+				<td><%=itemsInfo.getInt("increment") %></td>
+				<td><%=itemsInfo.getTimestamp("startDate") %></td>
+				<td><%=itemsInfo.getTimestamp("endDate") %></td>
+				<td><%=itemsInfo.getInt("rating") %></td>
+				<td><%=itemsInfo.getString("username") %></td>
 				</tr>
 <%
 			}
@@ -93,7 +93,7 @@ RU Clothing WatchLists
 		<form method="post" action="../auction/requestItem.jsp">
 		<table>
 		<tr>    
-		<td>Item ID</td><td><input type="text" name="item_id"> <input type="submit" value="Access Item Page"> </td> 
+		<td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
 		</tr>
 		<tr><td>
 		</table>

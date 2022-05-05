@@ -26,34 +26,34 @@
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			//Get parameters from the HTML form at the index.jsp
-			String item_id = request.getParameter("item_id");
-			session.setAttribute("item_id", item_id);
+			String itemId = request.getParameter("itemId");
+			session.setAttribute("itemId", itemId);
 			
 			
 			// creates an empty to query
 			String query = "";
 			
 			// used to generate the generic item info
-			ResultSet item_request = stmt.executeQuery("select * from items where item_id='"+item_id+"'and end_date > now()");
+			ResultSet itemRequest = stmt.executeQuery("select * from items where itemId='"+itemId+"'and endDate > now()");
 			
 			// used to generate the specific item info
-			ResultSet specific_item;
+			ResultSet specificItem;
 			
-			// used to generate the current_bid item info
-			ResultSet item_bid;
+			// used to generate the currentBid item info
+			ResultSet itemBid;
 			
 			// user attribute used to allow whether they can bid or not
 			String user = (String)session.getAttribute("user"); 
-			String default_bid = "default_bid";
+			String defaultBid = "defaultBid";
 		
-			if(item_request.next()) {	
-				int initialprice = item_request.getInt("initial_price");
-				session.setAttribute("initial_price",item_request.getInt("initial_price"));
-				session.setAttribute("increment",item_request.getInt("increment"));
-				int itemid = item_request.getInt("item_id");
-				int incrementamt = item_request.getInt("increment");
-				String username = item_request.getString("username");
-				String clothingtype = item_request.getString("clothing_type");%>
+			if(itemRequest.next()) {	
+				int initialprice = itemRequest.getInt("initialPrice");
+				session.setAttribute("initialPrice",itemRequest.getInt("initialPrice"));
+				session.setAttribute("increment",itemRequest.getInt("increment"));
+				int itemid = itemRequest.getInt("itemId");
+				int incrementamt = itemRequest.getInt("increment");
+				String username = itemRequest.getString("username");
+				String clothingtype = itemRequest.getString("clothingType");%>
 				
 				<% // table to show item descriptions %>
 			
@@ -73,15 +73,15 @@
 				<td>Seller</td>
 			
 				<tr>
-				<td><%=item_request.getInt("item_id") %></td>
-				<td><%=item_request.getString("name") %></td>
-				<td><%=item_request.getString("clothing_type") %></td>
+				<td><%=itemRequest.getInt("itemId") %></td>
+				<td><%=itemRequest.getString("name") %></td>
+				<td><%=itemRequest.getString("clothingType") %></td>
 				<td><%=initialprice%></td>
-				<td><%=item_request.getInt("increment") %></td>
-				<td><%=item_request.getTimestamp("start_date") %></td>
-				<td><%=item_request.getTimestamp("end_date") %></td>
-				<td><%=item_request.getInt("rating") %></td>
-				<td><%=item_request.getString("username") %></td>
+				<td><%=itemRequest.getInt("increment") %></td>
+				<td><%=itemRequest.getTimestamp("startDate") %></td>
+				<td><%=itemRequest.getTimestamp("endDate") %></td>
+				<td><%=itemRequest.getInt("rating") %></td>
+				<td><%=itemRequest.getString("username") %></td>
 				</tr>
 				</table>
 				
@@ -90,8 +90,8 @@
 			
 			
 			<% 
-			specific_item = stmt.executeQuery("select * from "+clothingtype+" where item_id = "+itemid+" ");
-			if(specific_item.next()) {%>
+			specificItem = stmt.executeQuery("select * from "+clothingtype+" where itemId = "+itemid+" ");
+			if(specificItem.next()) {%>
 				<%// item specifications (desc) %>
 				<div align="center">
 				<b><br>Item Descriptions</br></b>
@@ -105,11 +105,11 @@
 				</tr>
 				</div>
 				<tr>
-				<td><%=specific_item.getString("size") %></td>
-				<td><%=specific_item.getString("gender") %></td>
-				<td><%=specific_item.getString("color") %></td>
-				<td><%=specific_item.getString("type") %></td>
-				<td><%=specific_item.getString("clothing_type") %></td>
+				<td><%=specificItem.getString("size") %></td>
+				<td><%=specificItem.getString("gender") %></td>
+				<td><%=specificItem.getString("color") %></td>
+				<td><%=specificItem.getString("type") %></td>
+				<td><%=specificItem.getString("clothingType") %></td>
 				</tr>
 				</table>
 				
@@ -155,14 +155,14 @@
 					
 				
 					
-					item_bid =  stmt.executeQuery("select max(bid_value) from bids where item_id='"+itemid+"'"); 
-					if(item_bid.next() && item_bid.getInt("max(bid_value)") != 0) {
+					itemBid =  stmt.executeQuery("select max(bidValue) from bids where itemId='"+itemid+"'"); 
+					if(itemBid.next() && itemBid.getInt("max(bidValue)") != 0) {
 						%>
 						<div align="center">
 						<table border="1">
 						<tr>
 							<th>Current Bid</th>
-							<td>$ <%=item_bid.getInt("max(bid_value)") %></td>
+							<td>$ <%=itemBid.getInt("max(bidValue)") %></td>
 						</tr>
 						</table>
 						</div>
@@ -181,8 +181,8 @@
 					}
 			
 					//now check if user can make the first bid on the item rather than subsequent bids
-					 item_bid =  stmt.executeQuery("select * from bids  where item_id = '"+item_id+"' and username != 'default_bid' "); 
-					if(item_bid.next()){
+					 itemBid =  stmt.executeQuery("select * from bids  where itemId = '"+itemId+"' and username != 'defaultBid' "); 
+					if(itemBid.next()){
 						// form to bid
 						%>
 						<br>
@@ -190,8 +190,8 @@
 						<div align='center'> 
 						<form method="post" action="../auction/bidAttempt.jsp">
 						<table>
-						<tr><td>Increase bid by</td><td><input type="number" value = 0 name="increase_bid_modifier"> * $<% out.println(" "+ incrementamt ); %></td></tr>
-						<tr><td>Set max bid(Optional)</td><td><input type="number" value = 0 name="max_bid_modifier"> * $<% out.println(" "+ incrementamt); %></td></tr>
+						<tr><td>Increase bid by</td><td><input type="number" value = 0 name="increaseBidModifier"> * $<% out.println(" "+ incrementamt ); %></td></tr>
+						<tr><td>Set max bid(Optional)</td><td><input type="number" value = 0 name="maxBidModifier"> * $<% out.println(" "+ incrementamt); %></td></tr>
 						</table>
 						<input type="submit" value="Input Bid">
 						</form>
@@ -202,7 +202,7 @@
 						<b><br>Bid Status </br></b>
 						<div align="center">
 						<form method="post" action="../auction/bidCheck.jsp">
-	  					<input type="radio" id="item" name="item_id" value="<%=itemid%>" required>
+	  					<input type="radio" id="item" name="itemId" value="<%=itemid%>" required>
 	  					<label for="item">Item ID: <%=itemid%></label><br>
 	  					<input type="submit" value="Check Bid Status"><input type="reset">
 						</form>
@@ -215,7 +215,7 @@
 							<div align="center">
 							<form method="post" action="../auction/firstBid.jsp">
 		 					<label for="item">Make initial bid?</label><br>
-		 					Yes<input type="radio" id="item" name="item_id" value="<%=itemid%>" required><br>
+		 					Yes<input type="radio" id="item" name="itemId" value="<%=itemid%>" required><br>
 		 					<input type="submit" value="submit">
 							</form>
 							</div>
@@ -237,17 +237,17 @@
 			} else {
 				//check if the auction has ended first
 		
-				ResultSet date_request = stmt.executeQuery("select * from items where item_id='"+item_id+"'and end_date < now()");
+				ResultSet dateRequest = stmt.executeQuery("select * from items where itemId='"+itemId+"'and endDate < now()");
 				
-				if(date_request.next()) {	
+				if(dateRequest.next()) {	
 					
-					//this item has ended - get the max bid for it and compare to current user, store min_win first
-					int reserve = date_request.getInt("min_win");	
+					//this item has ended - get the max bid for it and compare to current user, store minWin first
+					int reserve = dateRequest.getInt("minWin");	
 							
 					//display item info here	
-					int initialprice = date_request.getInt("initial_price");
-					String clothingtype = date_request.getString("clothing_type");
-					int itemid = date_request.getInt("item_id");
+					int initialprice = dateRequest.getInt("initialPrice");
+					String clothingtype = dateRequest.getString("clothingType");
+					int itemid = dateRequest.getInt("itemId");
 					 // table to show item descriptions %>
 				
 					<div align="center">
@@ -265,15 +265,15 @@
 					<td>Seller</td>
 				
 					<tr>
-					<td><%=date_request.getInt("item_id") %></td>
-					<td><%=date_request.getString("name") %></td>
-					<td><%=date_request.getString("clothing_type") %></td>
+					<td><%=dateRequest.getInt("itemId") %></td>
+					<td><%=dateRequest.getString("name") %></td>
+					<td><%=dateRequest.getString("clothingType") %></td>
 					<td><%=initialprice%></td>
-					<td><%=date_request.getInt("increment") %></td>
-					<td><%=date_request.getTimestamp("start_date") %></td>
-					<td><%=date_request.getTimestamp("end_date") %></td>
-					<td><%=date_request.getInt("rating") %></td>
-					<td><%=date_request.getString("username") %></td>
+					<td><%=dateRequest.getInt("increment") %></td>
+					<td><%=dateRequest.getTimestamp("startDate") %></td>
+					<td><%=dateRequest.getTimestamp("endDate") %></td>
+					<td><%=dateRequest.getInt("rating") %></td>
+					<td><%=dateRequest.getString("username") %></td>
 					</tr>
 					</table>
 					
@@ -281,8 +281,8 @@
 					</div>
 				<% 
 				
-				date_request = stmt.executeQuery("select * from "+clothingtype+" where item_id = "+itemid+" ");
-				if(date_request.next()) {%>
+				dateRequest = stmt.executeQuery("select * from "+clothingtype+" where itemId = "+itemid+" ");
+				if(dateRequest.next()) {%>
 					<%// item specifications (desc) %>
 					<div align="center">
 					<b><br>Item Descriptions</br></b>
@@ -296,11 +296,11 @@
 					</tr>
 					</div>
 					<tr>
-					<td><%=date_request.getString("size") %></td>
-					<td><%=date_request.getString("gender") %></td>
-					<td><%=date_request.getString("color") %></td>
-					<td><%=date_request.getString("type") %></td>
-					<td><%=date_request.getString("clothing_type") %></td>
+					<td><%=dateRequest.getString("size") %></td>
+					<td><%=dateRequest.getString("gender") %></td>
+					<td><%=dateRequest.getString("color") %></td>
+					<td><%=dateRequest.getString("type") %></td>
+					<td><%=dateRequest.getString("clothingType") %></td>
 					</tr>
 					</table>
 					<hr noshade size="16">
@@ -309,27 +309,27 @@
 					
 					<%
 						
-					// check_seller is used to check if the seller is accessing the page of something that has already been sold/not sold.
-					ResultSet check_seller = stmt.executeQuery("select username from items where item_id="+item_id+"");
-					if(check_seller.next()) {
-						String seller_name_check = check_seller.getString("username");
-						check_seller.close();
+					// checkSeller is used to check if the seller is accessing the page of something that has already been sold/not sold.
+					ResultSet checkSeller = stmt.executeQuery("select username from items where itemId="+itemId+"");
+					if(checkSeller.next()) {
+						String sellerNameCheck = checkSeller.getString("username");
+						checkSeller.close();
 						
-						date_request = stmt.executeQuery("select bids.item_id, bids.bid_value, bids.username from bids, (select max(bid_value) as bid_value, item_id from bids group by item_id) t0 where bids.bid_value = t0.bid_value and bids.item_id = t0.item_id and bids.username!= '"+default_bid+"' and bids.item_id='"+item_id+"'");
+						dateRequest = stmt.executeQuery("select bids.itemId, bids.bidValue, bids.username from bids, (select max(bidValue) as bidValue, itemId from bids group by itemId) t0 where bids.bidValue = t0.bidValue and bids.itemId = t0.itemId and bids.username!= '"+defaultBid+"' and bids.itemId='"+itemId+"'");
 						//if we successfully query the max bid for the item check that the username = current user and that the current bid > reserve
 								
-						if(date_request.next()) {
-							if ( (date_request.getString("username").equals(user)) && (date_request.getInt("bid_value") >= reserve) ){
+						if(dateRequest.next()) {
+							if ( (dateRequest.getString("username").equals(user)) && (dateRequest.getInt("bidValue") >= reserve) ){
 								%>
 								You have won this item!
 								<%
 					
-							} else if (seller_name_check.equals(user)) {
+							} else if (sellerNameCheck.equals(user)) {
 						 		%>
 						 		The allocated time for this auction has ended. You have sold this item.
 						 		<% 
 							
-							//else if max_bid > reserve - what do?	
+							//else if maxBid > reserve - what do?	
 							} else{
 								%>
 								You did not win this item! Better luck next time sport!
@@ -342,7 +342,7 @@
 						}
 					} 
 					
-				//if query pulls nothing then the item_id is n/a
+				//if query pulls nothing then the itemId is n/a
 				}else{
 					out.println("The requested page for the item id does not exist.");
 				%>
@@ -351,7 +351,7 @@
 				}
 				
 			} else {
-				// case where they request a non-existent item_id
+				// case where they request a non-existent itemId
 				out.println("The requested page for the item id does not exist.");
 				%>
 				<button type="button" name="back" onclick="history.back()">Try Again.</button>
@@ -369,10 +369,10 @@
 		<hr noshade size="16">
 	<form action = "../search/itemHistory.jsp">
 
-			<button type="submit" name="itemid" value = "<%=session.getAttribute("item_id")%>"> To Bid History</button>
+			<button type="submit" name="itemid" value = "<%=session.getAttribute("itemId")%>"> To Bid History</button>
 	</form>
 	<form action = "../search/relatedItems.jsp">
-			<button type="submit" name="itemid" value = "<%=session.getAttribute("item_id")%>">To Similar Items</button>
+			<button type="submit" name="itemid" value = "<%=session.getAttribute("itemId")%>">To Similar Items</button>
 	</form>
 	
 

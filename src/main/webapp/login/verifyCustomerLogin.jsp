@@ -23,9 +23,9 @@
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			
-			ResultSet login_info = stmt.executeQuery("select * from users where username='"+username+"' and password='"+password+"'");
+			ResultSet loginInfo = stmt.executeQuery("select * from users where username='"+username+"' and password='"+password+"'");
 			
-			if(login_info.next()) {
+			if(loginInfo.next()) {
 				if(username.length() != 0 && username != null && password.length() != 0 && password != null) {
 					session.setAttribute("user", username);
 					

@@ -19,9 +19,9 @@
 			String password = request.getParameter("password");
 			String email = request.getParameter("email");
 			
-			ResultSet login_info = stmt.executeQuery("select * from users where username='"+username+"'");
+			ResultSet loginInfo = stmt.executeQuery("select * from users where username='"+username+"'");
 			
-			if(login_info.next()) {
+			if(loginInfo.next()) {
 				if (username != null || username.length() != 0) {
 					if(password != null || password.length() != 0) {
 						String update = "update users set password=? where username=?";

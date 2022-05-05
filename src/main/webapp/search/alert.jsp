@@ -13,7 +13,7 @@
 		<form action = "createAlert.jsp">
 			<table>
 				<tr>
-					<td>Item Name</td><td><input type="text" name="itemName"></td>
+					<td>Clothing Name</td><td><input type="text" name="clothingName"></td>
 				</tr>
 			</table>
 			<input type="submit" value = "createAlert">

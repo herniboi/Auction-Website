@@ -40,14 +40,14 @@
 			int maxPrice = Integer.parseInt(request.getParameter("MaxPrice"));
 			String sortingMethod = request.getParameter("SortingMethod");
 			System.out.println(sortingMethod);
-			String sqlQuery = "select * from(select t1.item_id, items.username, items.start_date, items.end_Date, items.name, items.clothing_type, t1.bid_value ";
-			sqlQuery+= "from (select * from bids where bid_value in (select max(bid_value) from bids group by item_id) group by item_id) as t1, items ";
-			sqlQuery+= "where t1.item_id = items.item_id) as t2 ";
-			sqlQuery+= "join " + qType + " on t2.item_id = " + qType + ".item_id";
+			String sqlQuery = "select * from(select t1.itemId, items.username, items.startDate, items.endDate, items.name, items.clothingType, t1.bidValue ";
+			sqlQuery+= "from (select * from bids where bidValue in (select max(bidValue) from bids group by itemId) group by itemId) as t1, items ";
+			sqlQuery+= "where t1.itemId = items.itemId) as t2 ";
+			sqlQuery+= "join " + qType + " on t2.itemId = " + qType + ".itemId";
 			sqlQuery += " where ";
 			sqlQuery+= qType + ".gender = '";
 			sqlQuery += gender; 
-			sqlQuery+= "' and t2. end_date > now()";
+			sqlQuery+= "' and t2. endDate > now()";
 			if(name != ""){
 				sqlQuery += " and (";
 				sqlQuery+= "t2.name = '";
@@ -64,16 +64,16 @@
 				sqlQuery+= "'";
 			}
 			if(maxPrice != 0.0){
-				sqlQuery+= " and t2.bid_value < " + maxPrice; 
+				sqlQuery+= " and t2.bidValue < " + maxPrice; 
 			}
 			
 			if(sortingMethod.equals("alphabetical")){
 				sqlQuery+= " order by type";
 			} else if(sortingMethod.equals("ascendingPrice")){
-				sqlQuery+= " order by bid_value ";
+				sqlQuery+= " order by bidValue ";
 			} else if(sortingMethod.equals("descendingPrice")){
 				
-				sqlQuery+= " order by bid_value desc";
+				sqlQuery+= " order by bidValue desc";
 			}
 			System.out.println("hello");
 			sqlQuery+= ";";
@@ -85,12 +85,12 @@
 				%>
 				
 				<tr>
-				<td><%=result.getInt("item_id") %></td>
+				<td><%=result.getInt("itemId") %></td>
 				<td><%=result.getString("name") %></td>
-				<td><%=result.getString("clothing_type") %></td>
-				<td><%=result.getInt("bid_value") %></td>
-				<td><%=result.getDate("start_date") %></td>
-				<td><%=result.getDate("end_date") %></td>
+				<td><%=result.getString("clothingType") %></td>
+				<td><%=result.getInt("bidValue") %></td>
+				<td><%=result.getDate("startDate") %></td>
+				<td><%=result.getDate("endDate") %></td>
 				<td><%=result.getString("username") %></td>
 				<td><%=result.getString("size") %></td>
 				<td><%=result.getString("gender") %></td>
@@ -114,7 +114,7 @@
 		<form method="post" action="../auction/requestItem.jsp">
 		<table>
 		<tr>    
-		<td>Item ID</td><td><input type="text" name="item_id"> <input type="submit" value="Access Item Page"> </td> 
+		<td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
 		</tr>
 		<tr><td>
 		</table>

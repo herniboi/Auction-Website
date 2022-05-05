@@ -18,13 +18,13 @@
 			
 			// Create a SQL statement
 			Statement stmt = con.createStatement();
-			String item_id = request.getParameter("question_id");
+			String itemId = request.getParameter("questionId");
 			String answer = request.getParameter("answer");
 			if(answer != null && answer.length() != 0) { // minimum must be >= initial
-				String insert = "update questions set answer=? where question_id=?";
+				String insert = "update questions set answer=? where questionId=?";
 				PreparedStatement ps = con.prepareStatement(insert);
 				ps.setString(1, answer);
-				ps.setString(2, item_id);
+				ps.setString(2, itemId);
 				ps.executeUpdate();
 				// redirects back to the market home
 				response.sendRedirect("answerHomePage.jsp");

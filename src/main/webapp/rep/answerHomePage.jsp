@@ -26,7 +26,7 @@ RU Clothing Q&A Service Page
 		<tr>    
 		<td><label for="answer">Answer: </label><input type="text" id="answer" name="answer"></td> 
 		</tr>
-		<tr><td><label for="question_id">Question ID: </label><input type="text" id="question_id" name="question_id"></td></tr>
+		<tr><td><label for="questionId">Question ID: </label><input type="text" id="questionId" name="questionId"></td></tr>
 		<tr><td><input type="submit" value="Submit"></td></tr> 
 		<tr><td>
 		</table>
@@ -51,19 +51,19 @@ RU Clothing Q&A Service Page
 			
 			// Create a SQL statement
 			Statement stmt = con.createStatement();
-			ResultSet items_info = stmt.executeQuery("select * from questions");
-			while(items_info.next()) {
+			ResultSet clothingInfo = stmt.executeQuery("select * from questions");
+			while(clothingInfo.next()) {
 				%>
 				<tr>
-				<td><%=items_info.getInt("question_id") %></td>
-				<td><%=items_info.getString("username") %></td>
-				<td><%=items_info.getString("question") %></td>
-				<td><%=items_info.getString("answer") %></td>
+				<td><%=clothingInfo.getInt("questionId") %></td>
+				<td><%=clothingInfo.getString("username") %></td>
+				<td><%=clothingInfo.getString("question") %></td>
+				<td><%=clothingInfo.getString("answer") %></td>
 				</tr>
 <%
 			}
 			
-			items_info.close();
+			clothingInfo.close();
 			
 		} catch (Exception e) {
 			//out.print(e);

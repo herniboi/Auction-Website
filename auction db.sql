@@ -67,7 +67,8 @@ CREATE TABLE `questions` (
 
 LOCK TABLES `questions` WRITE;
 INSERT INTO `questions` (question, questionId, username, answer) values
-("How do I create a new account?", 0, "user1", "Go to the home page and click on the register button under the customer header.");
+("How do I create a new account?", 0, "user1", "Go to the home page and click on the register button under the customer header."),
+("How do I sell an item?", 1, "user2", "");
 UNLOCK TABLES;
 --
 -- Table structure for table `clothing`

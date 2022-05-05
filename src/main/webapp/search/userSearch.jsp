@@ -25,7 +25,7 @@
 		Statement stmt = con.createStatement(); 
 		
 		String username = request.getParameter("userName");
-		String sqlQuery = "select * from users where username != 'default_bid'";
+		String sqlQuery = "select * from users where username != 'defaultBid'";
 		if(username != ""){
 			sqlQuery += " and username = '" + username + "' or username like '" + username + "%'";
 		}
@@ -35,12 +35,12 @@
 		
 		while(result.next()){
 			System.out.println(result.getString("username"));
-			System.out.println(result.getInt("user_id"));
+			System.out.println(result.getInt("userId"));
 			System.out.println(result.getInt("rating"));
 			%>
 			<tr>
 			<td><%= result.getString("username") %></td>
-			<td><%= result.getInt("user_id") %></td>
+			<td><%= result.getInt("userId") %></td>
 			<td><%= result.getInt("rating") %></td>
 			</tr>
 			<% 

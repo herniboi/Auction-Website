@@ -21,8 +21,8 @@
 			//Get parameters from the HTML form at the index.jsp
 			String username = request.getParameter("username");			
 			
-			ResultSet login_info = stmt.executeQuery("select * from customerservicerep where username='"+username+"'");
-			if(login_info.next() && username != null && username.length() != 0) {
+			ResultSet loginInfo = stmt.executeQuery("select * from customerservicerep where username='"+username+"'");
+			if(loginInfo.next() && username != null && username.length() != 0) {
 				PreparedStatement ps = con.prepareStatement("delete from customerservicerep where username=?");
 				ps.setString(1, username);
 				//Run the query against the DB

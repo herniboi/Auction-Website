@@ -12,7 +12,7 @@
 <body>
 	<%
 	try{
-		String itemName = request.getParameter("itemName");
+		String clothingName = request.getParameter("clothingName");
 		
 		ApplicationDB db = new ApplicationDB(); 
 		Connection con = db.getConnection(); 
@@ -20,7 +20,7 @@
 		//Create sql statement 
 		Statement stmt = con.createStatement(); 
 		String user = (String)session.getAttribute("user"); 
-		String sqlInsert = "insert into lookingFor(item_name, username) values('" + itemName + "','" + user + "');";
+		String sqlInsert = "insert into lookingFor(clothingName, username) values('" + clothingName + "','" + user + "');";
 		System.out.println(sqlInsert);
 		stmt.executeUpdate(sqlInsert);
 	}catch(Exception E ){

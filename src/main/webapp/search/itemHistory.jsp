@@ -12,12 +12,12 @@
 <body>
 	<%
 	try{
-		int itemid = Integer.parseInt(request.getParameter("itemid"));
+		int itemId = Integer.parseInt(request.getParameter("itemId"));
 		ApplicationDB db = new ApplicationDB(); 
 		Connection con = db.getConnection(); 
 		
 		Statement stmt = con.createStatement(); 
-		String sql = "select * from bids where bids.item_id = " + itemid + " and username != 'default_bid';";
+		String sql = "select * from bids where bids.itemId = " + itemId + " and username != 'defaultBid';";
 		ResultSet result = stmt.executeQuery(sql);
 		%>
 		
@@ -35,11 +35,11 @@
 		while(result.next()){
 			%>
 			<tr>
-			<td><%= result.getInt("item_id") %></td>
+			<td><%= result.getInt("itemId") %></td>
 			<td><%= result.getString("username") %></td>
-			<td><%= result.getInt("bid_value") %></td>
-			<td><%= result.getInt("max_bid") %></td>
-			<td><%= result.getDate("date_time") %></td>
+			<td><%= result.getInt("bidValue") %></td>
+			<td><%= result.getInt("maxBid") %></td>
+			<td><%= result.getDate("dateTime") %></td>
 			</tr>
 			<% 
 		}

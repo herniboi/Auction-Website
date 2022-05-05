@@ -16,17 +16,17 @@
 			<button type="button" name="back" onclick="history.back()">Go
 				Back</button>
 		</form>
-		<form action="verifyBidDelete.jsp" id="delete_bid">
+		<form action="verifyBidDelete.jsp" id="deleteBid">
 		<table border="2">
 			<tr>
-			<td><label for="item_id">Item ID:</label>
-			<input type="text" id="item_id" name="item_id"></td>
+			<td><label for="itemId">Item ID:</label>
+			<input type="text" id="itemId" name="itemId"></td>
 			<td><label for="name">Name:</label>
 			<input type="text" id="name" name="name"></td>
-			<td><label for="bid_value">Bid Value:</label>
-			<input type="text" id="bid_value" name="bid_value"></td>
-			<td><label for="max_bid">Max Bid:</label>
-			<input type="text" id="max_bid" name="max_bid"></td>
+			<td><label for="bidValue">Bid Value:</label>
+			<input type="text" id="bidValue" name="bidValue"></td>
+			<td><label for="maxBid">Max Bid:</label>
+			<input type="text" id="maBid" name="maxBid"></td>
 			<td><input type="submit" value="Delete"></td>
 			</tr>
 			</table>
@@ -47,21 +47,21 @@
 					Connection con = db.getConnection();
 					//Create a SQL statement
 					Statement stmt = con.createStatement();
-					String item_id = request.getParameter("item_id");
-					ResultSet items_info = stmt.executeQuery("select * from bids where item_id="+item_id);
-					while (items_info.next()) {
+					String itemId = request.getParameter("itemId");
+					ResultSet itemsInfo = stmt.executeQuery("select * from bids where itemId="+itemId);
+					while (itemsInfo.next()) {
 				%>
 			
 			<tr>
-				<td><%=items_info.getInt("item_id")%></td>
-				<td><%=items_info.getString("username")%></td>
-				<td><%=items_info.getInt("bid_value")%></td>
-				<td><%=items_info.getInt("max_bid")%></td>
-				<td><%=items_info.getTimestamp("date_time")%></td>
+				<td><%=itemsInfo.getInt("itemId")%></td>
+				<td><%=itemsInfo.getString("username")%></td>
+				<td><%=itemsInfo.getInt("bidValue")%></td>
+				<td><%=itemsInfo.getInt("maxBid")%></td>
+				<td><%=itemsInfo.getTimestamp("dateTime")%></td>
 			</tr>
 			<%
 			}
-			items_info.close();
+			itemsInfo.close();
 			} catch (Exception e) {
 			//out.print(e);
 			out.println("an error has occurred.");

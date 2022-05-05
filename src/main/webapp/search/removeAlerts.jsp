@@ -12,8 +12,8 @@
 <body>
 	<%
 	try{
-		String itemname = request.getParameter("item_name");
-		String sql = "delete from lookingfor where item_name = '" + itemname + "';";
+		String itemname = request.getParameter("itemName");
+		String sql = "delete from lookingfor where itemName = '" + itemname + "';";
 		
 		ApplicationDB db = new ApplicationDB(); 
 		Connection con = db.getConnection(); 

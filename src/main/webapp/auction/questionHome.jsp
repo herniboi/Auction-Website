@@ -50,24 +50,24 @@ RU Clothing Questions Page
 			
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
-			ResultSet items_info = stmt.executeQuery("select * from questions");
-			while(items_info.next()) {
+			ResultSet itemsInfo = stmt.executeQuery("select * from questions");
+			while(itemsInfo.next()) {
 				%>
 				<tr>
-				<td><%=items_info.getInt("question_id") %></td>
-				<td><%=items_info.getString("username") %></td>
-				<td><%=items_info.getString("question") %></td>
-				<td><%=items_info.getString("answer") %></td>
+				<td><%=itemsInfo.getInt("questionId") %></td>
+				<td><%=itemsInfo.getString("username") %></td>
+				<td><%=itemsInfo.getString("question") %></td>
+				<td><%=itemsInfo.getString("answer") %></td>
 				</tr>
 <%
 			}
 			
-			items_info.close();
+			itemsInfo.close();
 			
 		} catch (Exception e) {
 			//out.print(e);
-			out.println("an error has occurred.");%>
-			<button type="button" name="back" onclick="history.back()">Try Again.</button>
+			out.println("An error has occurred.");%>
+			<button type="button" name="back" onclick="history.back()">Reload.</button>
 		<%
 		}
 		

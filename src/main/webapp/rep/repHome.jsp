@@ -42,7 +42,7 @@
 					<div class="card" style="width: 18rem;">
 						<div class="card-body">
 							<h5 class="card-title">Delete Auction</h5>
-							<form method="post" action="delete_auction.jsp">
+							<form method="post" action="deleteAuction.jsp">
 								<input type="submit" value="Delete Auction Page">
 							</form>
 						</div>

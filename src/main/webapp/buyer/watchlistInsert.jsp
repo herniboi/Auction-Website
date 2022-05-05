@@ -20,18 +20,18 @@
 		Statement stmt = con.createStatement();
 		
 		//get values from buyer page bid attempt
-		int item_id = Integer.parseInt((String)session.getAttribute("item_id"));
+		int itemId = Integer.parseInt((String)session.getAttribute("itemId"));
 		String user = (String)session.getAttribute("user"); 
 		
-		ResultSet item_bid = stmt.executeQuery("select * from items where item_id = '"+item_id+"'");
+		ResultSet itemBid = stmt.executeQuery("select * from items where itemId = '"+itemId+"'");
 		
-		if(item_bid.next()) {	
-			String seller = item_bid.getString("username");
+		if(itemBid.next()) {	
+			String seller = itemBid.getString("username");
 			
 			//allow insert into watchlists if user not already watching and user is not seller
 			
-			item_bid =  stmt.executeQuery("select * from watchlists where item_id = '"+item_id+"' and username = '"+user+"'"); 
-			if(item_bid.next() || seller.equals(user)){
+			itemBid =  stmt.executeQuery("select * from watchlists where itemId = '"+itemId+"' and username = '"+user+"'"); 
+			if(itemBid.next() || seller.equals(user)){
 				   out.println("You have either already bid on this item, or are the one selling it");
 	               %>
 	               <form method="post" action="../auction/auctionHome.jsp">
@@ -39,9 +39,9 @@
 	               </form>
 	               <% 
 			}else{
-				String insert = "INSERT INTO `watchlists` (item_id, username) " + "VALUES (?, ?)";
+				String insert = "INSERT INTO `watchlists` (itemId, username) " + "VALUES (?, ?)";
 				PreparedStatement ps = con.prepareStatement(insert);
-				ps.setInt(1, item_id);
+				ps.setInt(1, itemId);
 				ps.setString(2, user);
 				ps.executeUpdate();
 				out.println("success");

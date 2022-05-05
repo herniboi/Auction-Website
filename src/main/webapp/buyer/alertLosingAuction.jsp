@@ -54,26 +54,26 @@
 			Connection con = db.getConnection();	
 			
 			String user = (String)session.getAttribute("user"); 
-			String default_bid = "default_bid";
+			String defaultBid = "defaultBid";
 			
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
 			
 			
-			ResultSet items_info = stmt.executeQuery("select * from items where item_id in (select t2.item_id from (select bids.item_id, bids.bid_value, bids.username from bids, (select max(bid_value) as bid_value, item_id from bids group by item_id) t0 where bids.bid_value = t0.bid_value and bids.item_id = t0.item_id and bids.username!= '"+default_bid+"') as t1, (select *  from bids where bid_value in (select max(bid_value) from bids where username = '"+user+"' group by item_id) and username = '"+user+"' ) as t2 where t1.item_id = t2.item_id and t2.username = t1.username ) and end_date <= now()");
+			ResultSet itemsInfo = stmt.executeQuery("select * from items where itemId in (select t2.itemId from (select bids.itemId, bids.bidValue, bids.username from bids, (select max(bidValue) as bidValue, itemId from bids group by itemId) t0 where bids.bidValue = t0.bidValue and bids.itemId = t0.itemId and bids.username!= '"+defaultBid+"') as t1, (select *  from bids where bidValue in (select max(bidValue) from bids where username = '"+user+"' group by itemId) and username = '"+user+"' ) as t2 where t1.itemId = t2.itemId and t2.username = t1.username ) and endDate <= now()");
 			
-			while(items_info.next()) {
+			while(itemsInfo.next()) {
 				%>
 				<tr>
-				<td><%=items_info.getInt("item_id") %></td>
-				<td><%=items_info.getString("name") %></td>
-				<td><%=items_info.getString("clothing_type") %></td>
-				<td><%=items_info.getInt("initial_price") %></td>
-				<td><%=items_info.getInt("increment") %></td>
-				<td><%=items_info.getTimestamp("start_date") %></td>
-				<td><%=items_info.getTimestamp("end_date") %></td>
-				<td><%=items_info.getInt("rating") %></td>
-				<td><%=items_info.getString("username") %></td>
+				<td><%=itemsInfo.getInt("itemId") %></td>
+				<td><%=itemsInfo.getString("name") %></td>
+				<td><%=itemsInfo.getString("clothingType") %></td>
+				<td><%=itemsInfo.getInt("initialPrice") %></td>
+				<td><%=itemsInfo.getInt("increment") %></td>
+				<td><%=itemsInfo.getTimestamp("startDate") %></td>
+				<td><%=itemsInfo.getTimestamp("endDate") %></td>
+				<td><%=itemsInfo.getInt("rating") %></td>
+				<td><%=itemsInfo.getString("username") %></td>
 				</tr>
 <%
 			}
@@ -94,7 +94,7 @@
 		<form method="post" action="../auction/requestItem.jsp">
 		<table>
 		<tr>    
-		<td>Item ID</td><td><input type="text" name="item_id"> <input type="submit" value="Access Item Page"> </td> 
+		<td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
 		</tr>
 		<tr><td>
 		</table>

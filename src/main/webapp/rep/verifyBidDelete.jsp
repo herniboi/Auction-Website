@@ -21,15 +21,15 @@
 			
 			// getting the parameters to insert
 			// to insert into items
-			String item_id = request.getParameter("item_id");
+			String itemId = request.getParameter("itemId");
 			String name = request.getParameter("name");
-			String bid_value = request.getParameter("bid_value");
-			String max_bid = request.getParameter("max_bid");
-			PreparedStatement ps1 = con.prepareStatement("delete from bids where item_id=? and username=? and bid_value=? and max_bid=?");
-			ps1.setString(1, item_id);
+			String bidValue = request.getParameter("bidValue");
+			String maxBid = request.getParameter("maxBid");
+			PreparedStatement ps1 = con.prepareStatement("delete from bids where itemId=? and username=? and bidValue=? and maxBid=?");
+			ps1.setString(1, itemId);
 			ps1.setString(2, name);
-			ps1.setString(3, bid_value);
-			ps1.setString(4, max_bid);
+			ps1.setString(3, bidValue);
+			ps1.setString(4, maxBid);
 			ps1.executeUpdate();
 		} catch (Exception e) {
 			out.print(e.toString());

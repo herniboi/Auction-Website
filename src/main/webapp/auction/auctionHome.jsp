@@ -90,27 +90,27 @@ RU Clothing Login Page (<%=username%>)
         
         //Create a SQL statement
         Statement stmt = con.createStatement();
-        ResultSet items_info = stmt.executeQuery("select * from clothing where endDate > now()");
-        while(items_info.next()) {
+        ResultSet itemsInfo = stmt.executeQuery("select * from clothing where endDate > now()");
+        while(itemsInfo.next()) {
             %>
             <tr>
-            <td><%=items_info.getInt("itemID") %></td>
-            <td><%=items_info.getString("name") %></td>
-            <td><%=items_info.getString("clothingType") %></td>
-            <td><%=items_info.getInt("initialPrice") %></td>
-            <td><%=items_info.getInt("increment") %></td>
-            <td><%=items_info.getTimestamp("startDate") %></td>
-            <td><%=items_info.getTimestamp("endDate") %></td>
-            <td><%=items_info.getInt("rating") %></td>
-            <td><%=items_info.getString("username") %></td>
+            <td><%=itemsInfo.getInt("itemId") %></td>
+            <td><%=itemsInfo.getString("name") %></td>
+            <td><%=itemsInfo.getString("clothingType") %></td>
+            <td><%=itemsInfo.getInt("initialPrice") %></td>
+            <td><%=itemsInfo.getInt("increment") %></td>
+            <td><%=itemsInfo.getTimestamp("startDate") %></td>
+            <td><%=itemsInfo.getTimestamp("endDate") %></td>
+            <td><%=itemsInfo.getInt("rating") %></td>
+            <td><%=itemsInfo.getString("username") %></td>
             </tr>
 <%
         }
         
-        items_info.close();
-        ResultSet get_current_time = stmt.executeQuery("SELECT CURRENT_TIMESTAMP");
-        get_current_time.next();
-        out.println("Current Time: " + get_current_time.getTimestamp("CURRENT_TIMESTAMP"));
+        itemsInfo.close();
+        ResultSet getCurrentTime = stmt.executeQuery("SELECT CURRENT_TIMESTAMP");
+        getCurrentTime.next();
+        out.println("Current Time: " + getCurrentTime.getTimestamp("CURRENT_TIMESTAMP"));
         
     } catch (Exception e) {
         //out.print(e);
