@@ -48,7 +48,7 @@
 			if(name != null && name.length() != 0
 			 && initialPrice != null && initialPrice.length() != 0
 			 && incrementPrice != null && incrementPrice.length() != 0
-			 && clothingSize != null && clothingDize.length() != 0
+			 && clothingSize != null && clothingSize.length() != 0
 			 && clothingGender != null && clothingGender.length() != 0
 			 && clothingColor != null && clothingColor.length() != 0
 			 && itemType != null && itemType.length() != 0
