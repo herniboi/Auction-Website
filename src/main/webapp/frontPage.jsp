@@ -26,7 +26,7 @@ RU Clothing Home Page
         <h5 class="card-title">Customer</h5>
         <form method="post" action="login/loginCustomer.jsp">
         <input type ="submit" value="Login" >
-        <input type ="submit" value="Register" formaction = "login/register_customer_form.jsp">
+        <input type ="submit" value="Register" formaction = "login/registerCustomer.jsp">
         </form>
     </div>
 </div>
@@ -37,7 +37,7 @@ RU Clothing Home Page
 <div class="card" style="width: 15rem;" >
     <div class="card-body">
         <h5 class="card-title">Customer Representative </h5>
-        <form method="post" action="login/login_representative_form.jsp">
+        <form method="post" action="login/loginRep.jsp">
         <input type ="submit" value="Login" >
         </form>
     </div>
@@ -49,7 +49,7 @@ RU Clothing Home Page
 <div class="card" style="width: 15rem;" >
     <div class="card-body">
         <h5 class="card-title">Administrator </h5>
-        <form method="post" action="login/login_admin_form.jsp">
+        <form method="post" action="login/loginAdmin.jsp">
         <input type ="submit" value="Login" >
         </form>
     </div>
