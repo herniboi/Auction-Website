@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Bid attempt</title>
 </head>
+<body style="background-color:#CC0033;font-family:trebuchet">
 <body>
 	<%
 	

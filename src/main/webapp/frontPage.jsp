@@ -10,12 +10,14 @@
             <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
             <title>RU Clothing</title>
         </head>
-
+        <body style="background-color:#CC0033;font-family:trebuchet">
+       
 <div align='center'> 
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 
 RU Clothing Home Page
-
-<table> 
+</h2>
+<table style='font-family:"Trebuchet", Trebuchet, monospace; font-size:130%; color:white'>
 <thead>
 <tr> 
 
@@ -25,20 +27,20 @@ RU Clothing Home Page
     <div class="card-body">
         <h5 class="card-title">Customer</h5>
         <form method="post" action="login/loginCustomer.jsp">
-        <input type ="submit" value="Login" >
-        <input type ="submit" value="Register" formaction = "login/registerCustomer.jsp">
+        <input type ="submit" value="Login" style='font-family: DengXian Light, Fantasy;'>
+        <input type ="submit" value="Register" style='font-family: DengXian Light, Fantasy;' formaction = "login/registerCustomer.jsp">
         </form>
     </div>
 </div>
 </th>
 
 <!-- Customer Representative Login-->
-<th> 
-<div class="card" style="width: 15rem;" >
+<th>
+<div class="card" style= "width: 15rem;" >
     <div class="card-body">
         <h5 class="card-title">Customer Representative </h5>
         <form method="post" action="login/loginRep.jsp">
-        <input type ="submit" value="Login" >
+        <input type ="submit" value="Login" style='font-family: DengXian Light, Fantasy;' >
         </form>
     </div>
 </div>
@@ -50,7 +52,7 @@ RU Clothing Home Page
     <div class="card-body">
         <h5 class="card-title">Administrator </h5>
         <form method="post" action="login/loginAdmin.jsp">
-        <input type ="submit" value="Login" >
+        <input type ="submit" value="Login" style='font-family: DengXian Light, Fantasy;'>
         </form>
     </div>
 </div>
@@ -61,5 +63,5 @@ RU Clothing Home Page
 </div>
 
 
-
+</body>
 </html>

@@ -11,7 +11,8 @@
 		<title>RU Clothing</title>
 	</head>
 	
-	<body>
+	
+	<body style="background-color:#CC0033;font-family:trebuchet">
 
 	<%
 	response.sendRedirect("../auction/auctionHome.jsp");
@@ -20,3 +21,4 @@
 	
 
 </body>
+</html>

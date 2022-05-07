@@ -8,7 +8,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background-color:#CC0033;font-family:trebuchet">
 <%
 		try {
 			
@@ -58,7 +58,6 @@
 			}
 				
 		} catch (Exception e) {
-			//out.print(e);
 			out.println("An error has occurred.");%>
 			<button type="button" name="back" onclick="history.back()">Try Again.</button>
 		<%

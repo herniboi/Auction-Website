@@ -6,26 +6,27 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>BuyMe Question Home</title>
+<title>RU Clothing Question Home</title>
 </head>
-<body>
+<body style="background-color:#CC0033;font-family:trebuchet">
 <div align='center'> 
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 
 RU Clothing Questions Page
-
+</h2>
 <!-- logout form  -->			  
 	<br>
 		<form method="post" action="auctionHome.jsp">
-    			<input type ="submit" value="Back" >
+    			<input type ="submit" value="Back" style='font-family: DengXian Light, Fantasy;'>
   </form>
 	<br>
 	
 	<div align='center'> 
 		<form method="post" action="repQuestions.jsp">
-		<table>
+		<table style='font-family:"Trebuchet", Trebuchet, monospace; font-size:130%; color:white'>
 		<tr>    
 		<td>Ask Question: </td>
-		<td><input type="text" name="question"> <input type="submit" value="Submit"> </td> 
+		<td><input type="text" name="question" style='font-family: DengXian Light, Fantasy;'> <input type="submit" value="Submit" style='font-family: DengXian Light, Fantasy;'> </td> 
 		</tr>
 		<tr><td>
 		</table>
@@ -34,8 +35,10 @@ RU Clothing Questions Page
 
 <hr noshade size="16">
 
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 <b><br>Questions</br></b>
-<table border="2">
+</h2>
+<table border="2" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 	<tr>
 	<td>Question ID</td>
 	<td>Name</td>
@@ -65,7 +68,6 @@ RU Clothing Questions Page
 			itemsInfo.close();
 			
 		} catch (Exception e) {
-			//out.print(e);
 			out.println("An error has occurred.");%>
 			<button type="button" name="back" onclick="history.back()">Reload.</button>
 		<%

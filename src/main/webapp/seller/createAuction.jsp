@@ -10,17 +10,18 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>RU Clothing</title>
 	</head>
-	
+	<body style="background-color:#CC0033;font-family:trebuchet">
 
 <div align='center'> 
-
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 RU Clothing Seller Page
 
 
 <!-- logout form  -->			  
 	<br>
 		<form method="post" action="../login/logoutCustomer.jsp">
-		<input type="submit" value="Logout"><button type="button" name="back" onclick="history.back()">Go Back</button>
+		<input type ="submit" value="Logout" style='font-family: DengXian Light, Fantasy;'>
+		<button type="button" name="back" style='font-family: DengXian Light, Fantasy;' onclick="history.back()">Go Back</button>
 		</form>
 	<br>
 

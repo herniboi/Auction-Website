@@ -10,30 +10,32 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>RU Clothing Site</title>
 	</head>
+	<body style="background-color:#CC0033;font-family:trebuchet">
 	
 
 <div align='center'> 
-
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 RU Clothing WatchLists
 
 
 <!-- logout form  -->			  
 	<br>
 		<form method="post" action="../login/logoutCustomer.jsp">
-		<input type="submit" value="Logout">
+		<input type="submit" value="Logout" style='font-family: DengXian Light, Fantasy;'>
 		</form>
 	<br>
 	
 <!-- go back to auction form  -->			  
 	<br>
 		<form method="post" action="../auction/redirectAuction.jsp">
-		<input type="submit" value="Login Page"><button type="button" name="back" onclick="history.back()">Go Back</button>
+		<input type="submit" value="Login Page" style='font-family: DengXian Light, Fantasy;'>
+		<button type="button" name="back" style='font-family: DengXian Light, Fantasy;' onclick="history.back()">Go Back</button>
 		</form>
 	<br>	
 
 <hr noshade size="16">
 <b><br>Watch Lists: These are the items that the user wants to keep an eye on.</br></b>
-<table border="2">
+<table style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white' border = "2">
 	<tr>
 	<td>Item ID</td>
 	<td>Name</td>
@@ -60,7 +62,7 @@ RU Clothing WatchLists
 			
 			
 			
-			ResultSet itemsInfo = stmt.executeQuery("select * from clothing where itemId in (select itemId from watchlists where username='"+user+"') and currentTimestamp < endDate;");
+			ResultSet itemsInfo = stmt.executeQuery("select * from clothing where itemId in (select itemId from watchlists where username='"+user+"') and current_timestamp < endDate;");
 			while(itemsInfo.next()) {
 				%>
 				<tr>
@@ -89,13 +91,12 @@ RU Clothing WatchLists
 </div>
 
 <div align='center'> 
-
 		<form method="post" action="../auction/requestItem.jsp">
-		<table>
+		<table style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 		<tr>    
-		<td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
+		<td>Item ID</td><td><input type="text" name="itemId" > 
+			<input type="submit" value="Access Item Page" style='font-family: DengXian Light, Fantasy;'> </td> 
 		</tr>
-		<tr><td>
 		</table>
 		</form>
 

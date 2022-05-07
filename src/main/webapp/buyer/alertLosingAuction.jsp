@@ -8,32 +8,35 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>BuyMe Site</title>
+		<title>RU Clothing Site</title>
 	</head>
+	<body style="background-color:#CC0033;font-family:trebuchet">
 	
 
 <div align='center'> 
-
-BuyMe Alert
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
+RU Clothing Alert
 
 
 <!-- logout form  -->			  
 	<br>
 		<form method="post" action="../login/logoutC.jsp">
-		<input type="submit" value="Logout">
+			<input type ="submit" value="Logout" style='font-family: DengXian Light, Fantasy;'>
 		</form>
 	<br>
 	
 <!-- go back to auction form  -->			  
 	<br>
 		<form method="post" action="../auction/redirectAuction.jsp">
-		<input type="submit" value="Login Page"><button type="button" name="back" onclick="history.back()">Go Back</button>
+		<input type="submit" value="Login Page" style='font-family: DengXian Light, Fantasy;'>
+		<button type="button" name="Go back" style='font-family: DengXian Light, Fantasy;' onclick="history.back()">Go Back</button>
+		
 		</form>
 	<br>	
 
 <hr noshade size="16">
 <b><br>Alert: The items shown below are where another user has placed a bid higher than your current bid.</br></b>
-<table border="2">
+<table style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white' border = "2">
 	<tr>
 	<td>Item ID</td>
 	<td>Name</td>
@@ -86,11 +89,11 @@ BuyMe Alert
 </div>
 
 <div align='center'> 
-
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 		<form method="post" action="../auction/requestItem.jsp">
 		<table>
 		<tr>    
-		<td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
+		<td>Item ID</td><td><input type="text" name="itemId"> <input type ="submit" value="Access Item Page" style='font-family: DengXian Light, Fantasy;'> </td> 
 		</tr>
 		<tr><td>
 		</table>

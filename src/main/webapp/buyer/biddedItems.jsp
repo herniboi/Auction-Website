@@ -10,10 +10,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>RU Clothing Site</title>
 	</head>
+	<body style="background-color:#CC0033;font-family:trebuchet">
 	
 
 <div align='center'> 
-
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 <b>RU Clothing Auction House</b>
 
 
@@ -21,21 +22,21 @@
 <!-- logout form  -->			  
 	<br>
 		<form method="post" action="../login/logoutCustomer.jsp">
-		<input type="submit" value="Logout">
+			<input type ="submit" value="Logout" style='font-family: DengXian Light, Fantasy;'>
 		</form>
 	<br>
 	
 <!-- go back to auction form  -->			  
 	<br>
 		<form method="post" action="../auction/redirectAuction.jsp">
-		<input type="submit" value="User Options">
-		<button type="button" name="back" onclick="history.back()">Go Back</button>
+		<input type ="submit" value="User Options" style='font-family: DengXian Light, Fantasy;'>
+		<input type ="submit" value="Go back" style='font-family: DengXian Light, Fantasy;'>
 		</form>
 	<br>	
 
 <hr noshade size="16">
 <b><br>Auction: This table contains the list of all the items the user has bid on.</br></b>
-<table border="2">
+<table style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white' border = "2">
 	<tr>
 	<td>Item ID</td>
 	<td>Name</td>
@@ -91,9 +92,9 @@
 <div align='center'> 
 
 		<form method="post" action="../auction/requestItem.jsp">
-		<table>
+		<table style='font-family:"Trebuchet", Trebuchet, monospace; font-size:100%; color:white'>
 		<tr>    
-		<td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
+		<td>Item ID</td><td><input type="text" name="itemId"> <input type ="submit" value="Access Item Page" style='font-family: DengXian Light, Fantasy;'> </td> 
 		</tr>
 		<tr><td>
 		</table>

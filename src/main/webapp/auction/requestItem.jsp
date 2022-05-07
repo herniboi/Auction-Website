@@ -9,11 +9,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Item</title>
 </head>
-<body>
+<body style="background-color:#CC0033;font-family:trebuchet">
 
 <div align="center"> 
 <form action="../auction/redirectAuction.jsp">
-<input type="submit" value="Auction Page">
+<input type="submit" value="Auction Page" style='font-family: DengXian Light, Fantasy;'>
 </form>
 </div>
 
@@ -59,8 +59,9 @@
 			
 				<div align="center">
 				<br>
-				<b><br>BuyMe Item Page</br></b>
-				<table border="2">
+				<b><br><h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>RU Clothing Item Page</h2></br></b>
+				</h2>
+				<table border="2" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 				<tr>
 				<td>Item ID</td>
 				<td>Name</td>
@@ -94,8 +95,10 @@
 			if(specificItem.next()) {%>
 				<%// item specifications (desc) %>
 				<div align="center">
+					<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 				<b><br>Item Descriptions</br></b>
-				<table border="2">
+					</h2>
+				<table border="2" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 				<tr>
 				<td>Item Size</td>
 				<td>Gender</td>
@@ -115,21 +118,21 @@
 				
 				<div align="center">
 				<form method="post" action="../buyer/watchlistInsert.jsp">
-				<input type="submit" value="Add Item To Watch List">
+				<input type="submit" value="Add Item To Watch List" style='font-family: DengXian Light, Fantasy;'>
 				</form>
 				
 				</div>
 				<hr noshade size="16">
-				
+				<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 				<b><br>Auction Information</br></b>
-				
+				</h2>
 				<%
 				// bidding session. this should only occur if the user attribute in session != username
 				// if the user is the seller, they cannot see the bid option.
 				if(user.equals(username)) {
 					%>
 					<div align="center">
-					<table border="1">
+					<table border="1" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 					<tr>
 						<th>Seller Status</th>
 						<td>Yes</td>
@@ -142,7 +145,7 @@
 					// condition where user is not a seller but they are a buyer --> they have access to the bid
 					%>
 					<div align="center">
-					<table border="1">
+					<table border="1" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 					<tr>
 						<th>Seller Status</th>
 						<td>N/A</td>
@@ -159,7 +162,7 @@
 					if(itemBid.next() && itemBid.getInt("max(bidValue)") != 0) {
 						%>
 						<div align="center">
-						<table border="1">
+						<table border="1" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 						<tr>
 							<th>Current Bid</th>
 							<td>$ <%=itemBid.getInt("max(bidValue)") %></td>
@@ -170,7 +173,7 @@
 					} else {
 						%>
 						<div align="center">
-						<table border="1">
+						<table border="1" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 						<tr>
 							<th>Current Bid(Initial Price)</th>
 							<td>$ <%=initialprice%></td>
@@ -189,22 +192,24 @@
 					
 						<div align='center'> 
 						<form method="post" action="../auction/bidAttempt.jsp">
-						<table>
+						<table style='font-family:"Trebuchet", Trebuchet, monospace; font-size:130%; color:white'>
 						<tr><td>Increase bid by</td><td><input type="number" value = 0 name="increaseBidModifier"> * $<% out.println(" "+ incrementamt ); %></td></tr>
 						<tr><td>Set max bid(Optional)</td><td><input type="number" value = 0 name="maxBidModifier"> * $<% out.println(" "+ incrementamt); %></td></tr>
 						</table>
-						<input type="submit" value="Input Bid">
+						<input type="submit" value="Input Bid" style='font-family: DengXian Light, Fantasy;'>
 						</form>
 						
 						</div>
 						
 						<hr noshade size="16">
+						<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 						<b><br>Bid Status </br></b>
+						</h2>
 						<div align="center">
 						<form method="post" action="../auction/bidCheck.jsp">
-	  					<input type="radio" id="item" name="itemId" value="<%=itemid%>" required>
+	  					<input type="radio" id="item" name="itemId" value="<%=itemid%>" style='font-family: DengXian Light, Fantasy;' required>
 	  					<label for="item">Item ID: <%=itemid%></label><br>
-	  					<input type="submit" value="Check Bid Status"><input type="reset">
+	  					<input type="submit" value="Check Bid Status" style='font-family: DengXian Light, Fantasy;'><input type="reset" style='font-family: DengXian Light, Fantasy;'>
 						</form>
 						</div>
 						
@@ -214,9 +219,11 @@
 						%>
 							<div align="center">
 							<form method="post" action="../auction/firstBid.jsp">
-		 					<label for="item">Make initial bid?</label><br>
-		 					Yes<input type="radio" id="item" name="itemId" value="<%=itemid%>" required><br>
-		 					<input type="submit" value="submit">
+								<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
+		 					<label for="item">Make initial bid? </label><br>
+							 	</h2>
+		 					Yes<input type="radio" id="item" name="itemId" value="<%=itemid%>" style='font-family: DengXian Light, Fantasy;'required><br>
+		 					<input type="submit" value="submit" style='font-family: DengXian Light, Fantasy;'>
 							</form>
 							</div>
 						
@@ -251,8 +258,10 @@
 					 // table to show item descriptions %>
 				
 					<div align="center">
-					<b><br>BuyMe Item</br></b>
-					<table border="2">
+						<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
+					<b><br>RU Clothing Item</br></b>
+						</h2>
+					<table border="2" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 					<tr>
 					<td>Item ID</td>
 					<td>Name</td>
@@ -285,8 +294,10 @@
 				if(dateRequest.next()) {%>
 					<%// item specifications (desc) %>
 					<div align="center">
+						<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 					<b><br>Item Descriptions</br></b>
-					<table border="2">
+						</h2>
+					<table border="2" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 					<tr>
 					<td>Item Size</td>
 					<td>Gender</td>
@@ -304,8 +315,9 @@
 					</tr>
 					</table>
 					<hr noshade size="16">
-					
+					<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 					<b><br>Auction Information</br></b>
+					</h2>
 					
 					<%
 						
@@ -369,10 +381,10 @@
 		<hr noshade size="16">
 	<form action = "../search/itemHistory.jsp">
 
-			<button type="submit" name="itemid" value = "<%=session.getAttribute("itemId")%>"> To Bid History</button>
+			<button type="submit" name="itemid" style='font-family: DengXian Light, Fantasy;' value = "<%=session.getAttribute("itemId")%>" > To Bid History</button>
 	</form>
 	<form action = "../search/relatedItems.jsp">
-			<button type="submit" name="itemid" value = "<%=session.getAttribute("itemId")%>">To Similar Items</button>
+			<button type="submit" name="itemid" style='font-family: DengXian Light, Fantasy;' value = "<%=session.getAttribute("itemId")%>">To Similar Items</button>
 	</form>
 	
 

@@ -8,15 +8,15 @@
 <meta charset="ISO-8859-1">
 <title>Sales Report</title>
 </head>
-<body>
+<body style="background-color:#CC0033;font-family:trebuchet">
 	<br>
 		<form method="post" action="login/logoutCustomer.jsp">
-		<input type="submit" value="Logout">
+		<input type="submit" value="Logout" style='font-family: DengXian Light, Fantasy;'>
 		</form>
 	<br>
 <hr noshade size="16">
-<h2>Sales Report</h2>
-<table border="2">
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; font-size:130%; color:white'>Sales Report</h2>
+<table style='font-family:"Trebuchet", Trebuchet, monospace; color:white' border="2">
 	<tr>
 	<td>Clothing Type</td>
 	<td>Earnings</td>
@@ -42,7 +42,7 @@
 			}
 			%>
 			</table>
-			<table border="2">
+			<table style='font-family:"Trebuchet", Trebuchet, monospace;  color:white' border="2">
 			<tr>
 			<td>Username</td>
 			<td>Earnings</td>
@@ -63,8 +63,8 @@
 			userInfo.close();
 			%>
 			</table>
-			<h3>Tops</h3>
-			<table border="2">
+			<h3 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>Tops</h3>
+			<table style='font-family:"Trebuchet", Trebuchet, monospace;  color:white' border="2">
 			<tr>
 			<td>Clothing Type</td>
 			<td>Earnings</td>
@@ -83,8 +83,8 @@
 			topsTypeInfo.close();
 			%>
 			</table>
-			<h3>Bottoms</h3>
-			<table border="2">
+			<h3 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>Bottoms</h3>
+			<table style='font-family:"Trebuchet", Trebuchet, monospace; color:white' border="2">
 			<tr>
 			<td>Clothing Type</td>
 			<td>Earnings</td>
@@ -104,8 +104,8 @@
 			%>
 
 			</table>
-			<h3>Socks</h3>
-			<table border="2">
+			<h3 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>Socks</h3>
+			<table style='font-family:"Trebuchet", Trebuchet, monospace; color:white' border="2">
 			<tr>
 			<td>Clothing Type</td>
 			<td>Earnings</td>
@@ -124,8 +124,8 @@
 			socksTypeInfo.close();
 			%>
 			</table>
-			<h3>OnePieces</h3>
-			<table border="2">
+			<h3 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>OnePieces</h3>
+			<table style='font-family:"Trebuchet", Trebuchet, monospace; color:white' border="2">
 			<tr>
 			<td>Clothing Type</td>
 			<td>Earnings</td>
@@ -145,9 +145,9 @@
 			%>
 
 			</table>
-			<h3>Best Selling Items</h3>
-			<h4>Tops</h4>
-			<table border="2">
+			<h3 style='font-family:"Trebuchet", Trebuchet, monospace; font-size:130%; color:white'>Best Selling Items</h3>
+			<h4 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>Tops</h4>
+			<table style='font-family:"Trebuchet", Trebuchet, monospace; color:white' border="2">
 			<tr>
 			<td>Clothing Type</td>
 			<td>Units Sold</td>
@@ -165,8 +165,8 @@
 			}
 			tops2TypeInfo.close();
 			%></table>
-			<h4>Bottoms</h4>
-			<table border="2">
+			<h4 style='font-family:"Trebuchet", Trebuchet, monospace;  color:white'>Bottoms</h4>
+			<table style='font-family:"Trebuchet", Trebuchet, monospace;  color:white' border="2">
 			<tr>
 			<td>Clothing Type</td>
 			<td>Units Sold</td>
@@ -184,8 +184,8 @@
 			}
 			bottoms2TypeInfo.close();
 			%></table>
-			<h4>Socks</h4>
-			<table border="2">
+			<h4 style='font-family:"Trebuchet", Trebuchet, monospace;  color:white'>Socks</h4>
+			<table style='font-family:"Trebuchet", Trebuchet, monospace;  color:white' border="2">
 			<tr>
 			<td>Clothing Type</td>
 			<td>Units Sold</td>
@@ -203,8 +203,8 @@
 			}
 			socks2TypeInfo.close();
 			%></table>
-			<h4>OnePieces</h4>
-			<table border="2">
+			<h4 style='font-family:"Trebuchet", Trebuchet, monospace;  color:white'>OnePieces</h4>
+			<table style='font-family:"Trebuchet", Trebuchet, monospace;  color:white' border="2">
 			<tr>
 			<td>Clothing Type</td>
 			<td>Units Sold</td>
@@ -223,8 +223,8 @@
 			onePieces2TypeInfo.close();
 			%>
 			</table>
-			<h3>Best Buyers</h3>
-			<table border="2">
+			<h3 style='font-family:"Trebuchet", Trebuchet, monospace; font-size:130%; color:white'>Best Buyers</h3>
+			<table style='font-family:"Trebuchet", Trebuchet, monospace;  color:white' border="2">
 			<tr>
 			<td>Username</td>
 			<td>Bids Won</td>

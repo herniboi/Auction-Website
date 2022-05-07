@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Item</title>
 </head>
-<body>
+<body style="background-color:#CC0033;font-family:trebuchet">>
 
 	<%
 		try {
@@ -52,7 +52,7 @@
 			if(currentBid.next() && currentBid.getInt("max(bidValue)") != 0) {
 				%>
 				<div align="center">
-				<table border="1">
+				<table border="1" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 				<tr>
 					<th>Current Bid</th>
 					<td>$ <%=currentBid.getInt("max(bidValue)") %></td>
@@ -65,7 +65,7 @@
 			} else {
 				%>
 				<div align="center">
-				<table border="1">
+				<table border="1" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 				<tr>
 					<th>Current Bid</th>
 					<td>N/A</td>
@@ -85,7 +85,7 @@
 			if(userBid.next() && userBid.getInt("bidValue") != 0) {
 				%>
 				<div align="center">
-				<table border="1">
+				<table border="1" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 				<tr>
 					<th>User Bid</th>
 					<td>$ <%=userBid.getInt("bidValue") %></td>
@@ -99,7 +99,7 @@
 			} else {
 				%>
 				<div align="center">
-				<table border="1">
+				<table border="1" style='font-family:"Trebuchet", Trebuchet, monospace; font-size:80%; color:white'>
 				<tr>
 					<th>User Bid</th>
 					<td>N/A</td>

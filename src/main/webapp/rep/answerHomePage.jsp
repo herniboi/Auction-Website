@@ -8,26 +8,26 @@
 <meta charset="ISO-8859-1">
 <title>RU Clothing Answering Service</title>
 </head>
-<body>
+<body style="background-color:#CC0033;font-family:trebuchet">>
 <div align='center'> 
-
+<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 RU Clothing Q&A Service Page
-
+</h2>
 <!-- logout form  -->			  
 	<br>
 		<form method="post" action="repHome.jsp">
-    			<input type ="submit" value="Back" >
+    			<input type ="submit" value="Back" style='font-family: DengXian Light, Fantasy;'>
   </form>
 	<br>
 	
-	<div align='center'> 
+	<div align='center'style='font-family:"Trebuchet", Trebuchet, monospace; font-size:130%; color:white'> 
 		<form method="post" action="answeringQuestions.jsp">
-		<table>
+		<table style='font-family:"Trebuchet", Trebuchet, monospace; font-size:130%; color:white'>
 		<tr>    
 		<td><label for="answer">Answer: </label><input type="text" id="answer" name="answer"></td> 
 		</tr>
 		<tr><td><label for="questionId">Question ID: </label><input type="text" id="questionId" name="questionId"></td></tr>
-		<tr><td><input type="submit" value="Submit"></td></tr> 
+		<tr><td><input type="submit" value="Submit" style='font-family: DengXian Light, Fantasy;'></td></tr> 
 		<tr><td>
 		</table>
 		</form>

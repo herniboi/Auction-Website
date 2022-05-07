@@ -10,14 +10,14 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>RU Clothing</title>
 	</head>
+	<body style="background-color:#CC0033;font-family:trebuchet">
 	
 	<body>
-
 		Administrator Login 
 							  
 	<br>
 		<form method="post" action="verifyAdminLogin.jsp">
-		<table>
+		<table style='font-family:"Trebuchet", Trebuchet, monospace; font-size:100%; color:white' border = "2">
 		<tr>    
 		<td>Username</td><td><input type="text" name="username"></td>
 		</tr>
