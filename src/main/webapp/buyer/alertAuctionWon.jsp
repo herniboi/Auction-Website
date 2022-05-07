@@ -60,7 +60,7 @@
 			Statement stmt = con.createStatement();
 			
 			
-			ResultSet itemsInfo = stmt.executeQuery("select * from items where itemId in (select t2.itemId from (select bids.itemId, bids.bidValue, bids.username from bids, (select max(bidValue) as bidValue, itemId from bids group by itemId) t0 where bids.bidValue = t0.bidValue and bids.itemId = t0.itemId and bids.username!= '"+defaultBid+"') as t1, (select *  from bids where bidValue in (select max(bidValue) from bids where username = '"+user+"' group by itemId) and username = '"+user+"' ) as t2 where t1.itemId = t2.itemId and t2.username = t1.username ) and endDate <= now()");
+			ResultSet itemsInfo = stmt.executeQuery("select * from clothing where itemId in (select t2.itemId from (select bids.itemId, bids.bidValue, bids.username from bids, (select max(bidValue) as bidValue, itemId from bids group by itemId) t0 where bids.bidValue = t0.bidValue and bids.itemId = t0.itemId and bids.username!= '"+defaultBid+"') as t1, (select *  from bids where bidValue in (select max(bidValue) from bids where username = '"+user+"' group by itemId) and username = '"+user+"' ) as t2 where t1.itemId = t2.itemId and t2.username = t1.username ) and endDate <= now()");
 			
 			while(itemsInfo.next()) {
 				%>

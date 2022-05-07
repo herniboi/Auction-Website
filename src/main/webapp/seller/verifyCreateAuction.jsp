@@ -75,7 +75,7 @@
 				findItemId.close();
 						
 				// insert into items ()
-				String insert = "insert into items(itemId, initialPrice, increment, startDate, endDate, name, minWin, clothingType, rating, username)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				String insert = "insert into clothing(itemId, initialPrice, increment, startDate, endDate, name, minWin, clothingType, rating, username)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement ps = con.prepareStatement(insert);
 				
 				// used for the start date of when this auction was created
@@ -107,7 +107,7 @@
 				ps.clearParameters();
 				
 				// insert into the respect database (shirts, shoes, hats)
-				insert = "insert into "+ clothingType + "(itemDd, size, gender, color, type, clothingType)" + "VALUES (?, ?, ?, ?, ?, ?)";
+				insert = "insert into "+ clothingType + "(itemId, size, gender, color, type, clothingType)" + "VALUES (?, ?, ?, ?, ?, ?)";
 				ps = con.prepareStatement(insert);
 				
 				ps.setInt(1, itemId);
@@ -115,7 +115,7 @@
 				ps.setString(3, clothingGender);
 				ps.setString(4, clothingColor);
 				ps.setString(5, clothingType);
-				//ps.setString(6, clothingType);
+				ps.setString(6, clothingType);
 				
 				// run the update for the respective db
 				ps.executeUpdate();
@@ -139,7 +139,7 @@
 				
 						
 				// redirects back to the market home
-				response.sendRedirect("../auction/auction_home.jsp");
+				response.sendRedirect("../auction/auctionHome.jsp");
 			} else {
 				out.println("Invalid input. All fields require an input and or proper inputs. \n"); %>
 				<button type="button" name="back" onclick="history.back()">Try Again.</button>

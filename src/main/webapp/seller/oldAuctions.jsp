@@ -55,7 +55,7 @@ RU CLothing Seller Old Auction Page
         
         //Create a SQL statement
         Statement stmt = con.createStatement();
-        ResultSet clothingInfo = stmt.executeQuery("select * from items where username='"+user+"' and now() > endDate");
+        ResultSet clothingInfo = stmt.executeQuery("select * from clothing where username='"+user+"' and now() > endDate");
         while(clothingInfo.next()) {
             %>
             <tr>

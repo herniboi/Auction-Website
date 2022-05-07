@@ -23,7 +23,7 @@
 		int itemId = Integer.parseInt((String)session.getAttribute("itemId"));
 		String user = (String)session.getAttribute("user"); 
 		
-		ResultSet itemBid = stmt.executeQuery("select * from items where itemId = '"+itemId+"'");
+		ResultSet itemBid = stmt.executeQuery("select * from clothing where itemId = '"+itemId+"'");
 		
 		if(itemBid.next()) {	
 			String seller = itemBid.getString("username");

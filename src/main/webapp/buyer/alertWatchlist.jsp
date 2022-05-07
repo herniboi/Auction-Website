@@ -60,7 +60,7 @@ RU Clothing WatchLists
 			
 			
 			
-			ResultSet itemsInfo = stmt.executeQuery("select * from items where itemId in (select itemId from watchlists where username='"+user+"') and currentTimestamp < endDate;");
+			ResultSet itemsInfo = stmt.executeQuery("select * from clothing where itemId in (select itemId from watchlists where username='"+user+"') and currentTimestamp < endDate;");
 			while(itemsInfo.next()) {
 				%>
 				<tr>

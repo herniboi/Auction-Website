@@ -25,7 +25,7 @@
 			String clothingType = request.getParameter("clothingType");
 			PreparedStatement ps1 = con.prepareStatement("delete from "+clothingType+" where itemId=?");
 			ps1.setString(1, itemId);
-			PreparedStatement ps2 = con.prepareStatement("delete from items where itemId=?");
+			PreparedStatement ps2 = con.prepareStatement("delete from clothing where itemId=?");
 			ps2.setString(1, itemId);
 			PreparedStatement pre = con.prepareStatement("SET FOREIGN_KEY_CHECKS=0");
 			PreparedStatement post = con.prepareStatement("SET FOREIGN_KEY_CHECKS=1");

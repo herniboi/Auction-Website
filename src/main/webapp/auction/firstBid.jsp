@@ -23,7 +23,7 @@
 		String setUser = (String)session.getAttribute("user"); 
 		String itemIds = request.getParameter("itemId");
 		int itemId = Integer.valueOf(itemIds);
-		ResultSet getInitPrice = stmt.executeQuery("select * from items where itemId = '"+itemId+"'");
+		ResultSet getInitPrice = stmt.executeQuery("select * from clothing where itemId = '"+itemId+"'");
 		int setBid = 0;
 		int setMax = 0;
 		if (getInitPrice.next()){

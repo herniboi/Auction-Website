@@ -123,28 +123,6 @@
 			}
 			socksTypeInfo.close();
 			%>
-
-</table>
-			<h3>Socks</h3>
-			<table border="2">
-			<tr>
-			<td>Clothing Type</td>
-			<td>Earnings</td>
-			<%
-			ResultSet socksTypeInfo = 
-					stmt.executeQuery(
-					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, items where bids.itemId=items.itemId and endDate < current_timestamp() group by bids.itemId) as t1, socks where t1.itemId = socks.itemId group by clothing.type");	
-			while(socksTypeInfo.next()) {
-				%>
-				<tr>
-				<td><%=socksTypeInfo.getString("type") %></td>
-				<td><%=socksTypeInfo.getString("total") %></td>
-				</tr>
-				<%
-			}
-			socksTypeInfo.close();
-			%>
-
 			</table>
 			<h3>OnePieces</h3>
 			<table border="2">

@@ -34,7 +34,7 @@
 			String query = "";
 			
 			// used to generate the generic item info
-			ResultSet itemRequest = stmt.executeQuery("select * from items where itemId='"+itemId+"'and endDate > now()");
+			ResultSet itemRequest = stmt.executeQuery("select * from clothing where itemId='"+itemId+"'and endDate > now()");
 			
 			// used to generate the specific item info
 			ResultSet specificItem;
@@ -237,7 +237,7 @@
 			} else {
 				//check if the auction has ended first
 		
-				ResultSet dateRequest = stmt.executeQuery("select * from items where itemId='"+itemId+"'and endDate < now()");
+				ResultSet dateRequest = stmt.executeQuery("select * from clothing where itemId='"+itemId+"'and endDate < now()");
 				
 				if(dateRequest.next()) {	
 					
@@ -310,7 +310,7 @@
 					<%
 						
 					// checkSeller is used to check if the seller is accessing the page of something that has already been sold/not sold.
-					ResultSet checkSeller = stmt.executeQuery("select username from items where itemId="+itemId+"");
+					ResultSet checkSeller = stmt.executeQuery("select username from clothing where itemId="+itemId+"");
 					if(checkSeller.next()) {
 						String sellerNameCheck = checkSeller.getString("username");
 						checkSeller.close();

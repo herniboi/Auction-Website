@@ -8,19 +8,18 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>RU Clothing Site</title>
+		<title>BuyMe Site</title>
 	</head>
 	
 
 <div align='center'> 
 
-<b>RU Clothing Auction House</b>
-
+BuyMe Alert
 
 
 <!-- logout form  -->			  
 	<br>
-		<form method="post" action="../login/logoutCustomer.jsp">
+		<form method="post" action="../login/logoutC.jsp">
 		<input type="submit" value="Logout">
 		</form>
 	<br>
@@ -28,13 +27,12 @@
 <!-- go back to auction form  -->			  
 	<br>
 		<form method="post" action="../auction/redirectAuction.jsp">
-		<input type="submit" value="User Options">
-		<button type="button" name="back" onclick="history.back()">Go Back</button>
+		<input type="submit" value="Login Page"><button type="button" name="back" onclick="history.back()">Go Back</button>
 		</form>
 	<br>	
 
 <hr noshade size="16">
-<b><br>Alert: The items shown below are the auctions where the user has won.</br></b>
+<b><br>Alert: The items shown below are where another user has placed a bid higher than your current bid.</br></b>
 <table border="2">
 	<tr>
 	<td>Item ID</td>
@@ -58,10 +56,8 @@
 			
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
-			
-			
-			ResultSet itemsInfo = stmt.executeQuery("select * from items where itemId in (select t2.itemId from (select bids.itemId, bids.bidValue, bids.username from bids, (select max(bidValue) as bidValue, itemId from bids group by itemId) t0 where bids.bidValue = t0.bidValue and bids.itemId = t0.itemId and bids.username!= '"+defaultBid+"') as t1, (select *  from bids where bidValue in (select max(bidValue) from bids where username = '"+user+"' group by itemId) and username = '"+user+"' ) as t2 where t1.itemId = t2.itemId and t2.username = t1.username ) and endDate <= now()");
-			
+	
+			ResultSet itemsInfo = stmt.executeQuery("select * from clothing where itemId in (select t2.itemId from (select bids.itemId, bids.bidValue, bids.username from bids, (select max(bidValue) as bidValue, itemId from bids group by itemId) t0 where bids.bidValue = t0.bidValue and bids.itemId = t0.itemId and bids.username!= '"+defaultBid+"') as t1, (select *  from bids where bidValue in (select max(bidValue) from bids where username = '"+user+"' group by itemId) and username = '"+user+"' ) as t2 where t1.itemId = t2.itemId and t2.username != t1.username ) and endDate > now()");
 			while(itemsInfo.next()) {
 				%>
 				<tr>
@@ -102,7 +98,6 @@
 
 
 </div>
-
 
 
 

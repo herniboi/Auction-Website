@@ -129,7 +129,7 @@ RU Clothing Login Page (<%=username%>)
     <form method="post" action="../auction/requestItem.jsp">
     <table>
     <tr>    
-    <td>Item ID</td><td><input type="text" name="item_id"> <input type="submit" value="Access Item Page"> </td> 
+    <td>Item ID</td><td><input type="text" name="itemId"> <input type="submit" value="Access Item Page"> </td> 
     </tr>
     <tr><td>
     </table>

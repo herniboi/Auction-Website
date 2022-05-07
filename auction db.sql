@@ -84,14 +84,8 @@ CREATE TABLE `clothing` (
   `name` varchar(50) DEFAULT NULL,
   `minWin` integer DEFAULT NULL,
   `clothingType` varchar(50) DEFAULT NULL,
-  `clothingTypeID` varchar(10) DEFAULT NULL,
-  `size` varchar(10) DEFAULT NULL,
-  `quantity` integer DEFAULT NULL,
-  `color` varchar(40) DEFAULT NULL,
-  `gender` char(1) DEFAULT NULL,
   `rating` integer DEFAULT NULL,
   `username` varchar(50) NOT NULL DEFAULT '',
-  `type` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`itemId`, `username`),
 FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -101,10 +95,10 @@ FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 --
 LOCK TABLES `clothing` WRITE;
 INSERT INTO `clothing` (itemId, initialPrice, increment, startDate, endDate, name, username, clothingType, minWin) values
-(001, 5, 1, '2021-04-012 12:00:00', '2021-04-018 23:59:59', 'shirt with 1 hole', 'user1','tops', 10),
-(002, 50, 2, '2021-04-012 12:00:00', '2021-04-018 23:59:59', 'roman civ 5s', 'user1','bottoms',75),
-(003, 100, 5, '2021-04-012 12:00:00', '2021-04-018 23:59:59', 'hotdog hat', 'user1', 'onePieces', 125),
-(004, 150, 9, '2021-04-012 12:00:00', '2021-04-018 23:59:59', 'something', 'user1', 'socks', 125);
+(001, 5, 1, '2021-04-012 12:00:00', '2022-05-018 23:59:59', 'shirt with 1 hole', 'user1','tops', 10),
+(002, 50, 2, '2021-04-012 12:00:00', '2022-05-018 23:59:59', 'roman civ 5s', 'user1','bottoms',75),
+(003, 100, 5, '2021-04-012 12:00:00', '2022-05-018 23:59:59', 'hotdog hat', 'user1', 'onePieces', 125),
+(004, 150, 9, '2021-04-012 12:00:00', '2022-05-018 23:59:59', 'something', 'user1', 'socks', 125);
 UNLOCK TABLES;
 --
 -- Table structure for table `tops`
@@ -112,15 +106,19 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `tops`;
 CREATE TABLE `tops` (
   `itemId` integer NOT NULL DEFAULT 0,
-  `clothingType` varchar(50) as "tops" persisted,
+  `size` varchar(10) DEFAULT NULL,
+  `color` varchar(40) DEFAULT NULL,
+  `gender` char(1) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `clothingType` varchar(50) DEFAULT NULL,
   FOREIGN KEY (`itemId`) REFERENCES `clothing` (`itemId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Dumping data for table `tops`
 --
 LOCK TABLES `tops` WRITE;
-INSERT INTO `tops` (itemId) values (001);
--- INSERT INTO `tops` (itemID) values(002);
+INSERT INTO `tops` (itemId, size, color, gender, type, clothingType) values 
+(001,'Large', 'white', 'M', 'TShirt', 'tops' );
 UNLOCK TABLES;
 --
 -- Table structure for table `bottoms`
@@ -128,13 +126,19 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `bottoms`;
 CREATE TABLE `bottoms` (
   `itemId` integer NOT NULL DEFAULT 0,
+  `size` varchar(10) DEFAULT NULL,
+  `color` varchar(40) DEFAULT NULL,
+  `gender` char(1) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `clothingType` varchar(50) DEFAULT NULL,
   FOREIGN KEY (`itemId`) REFERENCES `clothing` (`itemId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Dumping data for table `bottoms`
 --
 LOCK TABLES `bottoms` WRITE;
-INSERT INTO `bottoms` (itemId) values(002);
+INSERT INTO `bottoms` (itemId, size, color, gender, type, clothingType) values 
+(002,'Large', 'white', 'M', 'Sweatpants', 'bottoms' );
 UNLOCK TABLES;
 --
 -- Table structure for table `socks`
@@ -142,13 +146,19 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `socks`;
 CREATE TABLE `socks` (
   `itemId` integer NOT NULL DEFAULT 0,
+  `size` varchar(10) DEFAULT NULL,
+  `color` varchar(40) DEFAULT NULL,
+  `gender` char(1) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `clothingType` varchar(50) DEFAULT NULL,
   FOREIGN KEY (`itemId`) REFERENCES `clothing` (`itemId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Dumping data for table `socks`
 --
 LOCK TABLES `socks` WRITE;
-INSERT INTO `socks` (itemId) values(004);
+INSERT INTO `socks` (itemId, size, color, gender, type, clothingType) values 
+(004,'Large', 'white', 'F', 'Ankle Socks', 'socks' );
 UNLOCK TABLES;
 --
 -- Table structure for table `onePieces`
@@ -156,13 +166,19 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `onePieces`;
 CREATE TABLE `onePieces` (
   `itemId` integer NOT NULL DEFAULT 0,
+  `size` varchar(10) DEFAULT NULL,
+  `color` varchar(40) DEFAULT NULL,
+  `gender` char(1) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `clothingType` varchar(50) DEFAULT NULL,
   FOREIGN KEY (`itemId`) REFERENCES `clothing` (`itemId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Dumping data for table `onePieces`
 --
 LOCK TABLES `onePieces` WRITE;
-INSERT INTO `onePieces` (itemId) values (003);
+INSERT INTO `onePieces` (itemId, size, color, gender, type, clothingType) values 
+(003,'Large', 'white', 'F', 'Dress', 'onePieces' );
 UNLOCK TABLES;
 
 
@@ -190,8 +206,8 @@ CREATE TABLE `bids` (
   `maxBid` integer NOT NULL DEFAULT 0,
   `dateTime` timestamp DEFAULT NULL,
   PRIMARY KEY(`itemId`,`username`,`bidValue`,`maxBid`),
-   FOREIGN KEY (`itemId`) REFERENCES `clothing` (`itemId`),
-   FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+  FOREIGN KEY (`itemId`) REFERENCES `clothing` (`itemId`),
+  FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

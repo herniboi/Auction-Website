@@ -90,7 +90,7 @@ RU Clothing Buyer Functions
 <div class="card" style="width: 18rem;" >
   <div class="card-body">
     <h5 class="card-title">Alert: Auctions Won</h5>
-    <form method="post" action="../buyer/alertWinningAuction.jsp">
+    <form method="post" action="../buyer/alertAuctionWon.jsp">
     <input type ="submit" value="Access Items Won" >
     </form>
   </div>
