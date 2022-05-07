@@ -13,7 +13,7 @@
 	<%
 	try{
 		String itemname = request.getParameter("itemName");
-		String sql = "delete from lookingfor where itemName = '" + itemname + "';";
+		String sql = "delete from lookingFor where itemName = '" + itemname + "';";
 		
 		ApplicationDB db = new ApplicationDB(); 
 		Connection con = db.getConnection(); 

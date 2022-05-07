@@ -25,10 +25,10 @@
 		<p>Bids</p>
 		<table border="2">
 		<tr>
-		<td>Item ID </td>
+		<td>Item ID</td>
 		<td>UserName</td>
 		<td>Bid Value</td>
-		<td>Max Bid </td>
+		<td>Max Bid</td>
 		<td>Date Time</td>
 		</tr>
 		<% 

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Check Alerts</title>
 </head>
 <body>
 	<%
@@ -18,7 +18,7 @@
 		
 		//Create sql statement 
 		Statement stmt = con.createStatement(); 
-		String sqlQuery = "select * from clothing, lookingfor where lookingfor.username = '" + user + "' and items.name = lookingfor.item_name and items.username != '" + user + "';";
+		String sqlQuery = "select * from clothing, lookingFor where lookingFor.username = '" + user + "' and items.name = lookingFor.itemName and items.username != '" + user + "';";
 		System.out.println(sqlQuery);
 		ResultSet result = stmt.executeQuery(sqlQuery);
 		

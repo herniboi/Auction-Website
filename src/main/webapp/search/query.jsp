@@ -24,9 +24,10 @@
 				</td>
 				<td>
 					<select name="queryType">
-						<option value="Hats">Hats</option>
-						<option value="Shirts">Shirts</option>
-						<option value="Shoes">Shoes</option>
+						<option value="tops">Tops</option>
+						<option value="bottoms">Bottoms</option>
+						<option value="socks">Socks</option>
+						<option value="onePieces">One Pieces</option>
 					</select>
 					</td>
 				</tr>
@@ -49,8 +50,9 @@
 			<tr>
 				<td>
 					<select name="gender">
-						<option value="Male">Male</option>
-						<option value="Female">Female</option>
+						<option value="M">Male</option>
+						<option value="F">Female</option>
+						<option value="U">Unisex</option>
 					</select>
 				</td>
 			</tr>

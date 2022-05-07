@@ -37,26 +37,28 @@
 			String gender = request.getParameter("gender");
 			String name = request.getParameter("query");
 			String color = request.getParameter("color");
+			String size = request.getParameter("size");
+			String type = request.getParameter("type");
 			int maxPrice = Integer.parseInt(request.getParameter("MaxPrice"));
 			String sortingMethod = request.getParameter("SortingMethod");
 			System.out.println(sortingMethod);
-			String sqlQuery = "select * from(select t1.itemId, items.username, items.startDate, items.endDate, items.name, items.clothingType, t1.bidValue ";
+
+			String sqlQuery = "select * from(select t1.itemId, clothing.username, clothing.startDate, clothing.endDate, clothing.name, clothing.clothingType, clothing.type, clothing.size, t1.bidValue ";
 			sqlQuery+= "from (select * from bids where bidValue in (select max(bidValue) from bids group by itemId) group by itemId) as t1, items ";
-			sqlQuery+= "where t1.itemId = items.itemId) as t2 ";
+			sqlQuery+= "where t1.itemId = clothing.itemId) as t2 ";
 			sqlQuery+= "join " + qType + " on t2.itemId = " + qType + ".itemId";
 			sqlQuery += " where ";
 			sqlQuery+= qType + ".gender = '";
 			sqlQuery += gender; 
-			sqlQuery+= "' and t2. endDate > now()";
+			sqlQuery+= "' and t2.endDate > now()";
+			
 			if(name != ""){
 				sqlQuery += " and (";
 				sqlQuery+= "t2.name = '";
 				sqlQuery+= name; 
 				sqlQuery+= "' or t2.name like '";
 				sqlQuery+= name + "%' or t2.name like '%"+name+"%')";
-			
 			}
-			
 			if(color != ""){
 				sqlQuery+= " and ";
 				sqlQuery+= qType + ".color = '";
@@ -68,18 +70,19 @@
 			}
 			
 			if(sortingMethod.equals("alphabetical")){
-				sqlQuery+= " order by type";
+				sqlQuery+= " order by name";
 			} else if(sortingMethod.equals("ascendingPrice")){
 				sqlQuery+= " order by bidValue ";
 			} else if(sortingMethod.equals("descendingPrice")){
-				
 				sqlQuery+= " order by bidValue desc";
 			}
+
 			System.out.println("hello");
 			sqlQuery+= ";";
 			System.out.println(sqlQuery);
 			ResultSet result = stmt.executeQuery(sqlQuery);
 			result.next(); 
+			
 			do{
 				
 				%>

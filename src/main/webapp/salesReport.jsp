@@ -31,7 +31,7 @@
 			Statement stmt = con.createStatement();
 			ResultSet clothingInfo = 
 					stmt.executeQuery(
-"select t1.itemId, t1.username, sum(t1.bidValue) as total, items.endDate, items.name, items.clothingType from(select * from bids where bidValue in (select max(bidValue) from bids group by itemId) group by itemId) as t1 join items on t1.itemId = items.itemId where endDate < current_timestamp group by items.clothingType");
+"select t1.itemId, t1.username, sum(t1.bidValue) as total, clothing.endDate, clothing.name, clothing.clothingType from(select * from bids where bidValue in (select max(bidValue) from bids group by itemId) group by itemId) as t1 join clothing on t1.itemId = clothing.itemId where endDate < current_timestamp group by clothing.clothingType");
 			while(clothingInfo.next()) {
 				%>
 				<tr>
@@ -51,7 +51,7 @@
 			
 			ResultSet userInfo = 
 					stmt.executeQuery(
-"select t1.itemId, items.username, sum(t1.bidValue) as total, items.clothingType from(select * from bids where bidValue in (select max(bidValue) from bids group by itemId)) as t1 join items on t1.itemId = items.itemId where endDate < current_timestamp");	
+"select t1.itemId, clothing.username, sum(t1.bidValue) as total, clothing.clothingType from(select * from bids where bidValue in (select max(bidValue) from bids group by itemId)) as t1 join clothing on t1.itemId = clothing.itemId where endDate < current_timestamp");	
 			while(userInfo.next()) {
 				%>
 				<tr>
@@ -71,7 +71,7 @@
 			<%
 			ResultSet topsTypeInfo = 
 					stmt.executeQuery(
-					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, clothing where bids.itemId=clothing.itemId and endDate < current_timestamp() group by bids.itemId) as t1, tops where t1.itemId = tops.itemId group by clothing.type");	
+					"select sum(price) as total, tops.type from (select max(bidValue) price, bids.itemId from bids, clothing where bids.itemId=clothing.itemId and endDate < current_timestamp() group by bids.itemId) as t1, tops where t1.itemId = tops.itemId group by tops.type");	
 			while(topsTypeInfo.next()) {
 				%>
 				<tr>
@@ -91,7 +91,7 @@
 			<%
 			ResultSet bottomsTypeInfo = 
 					stmt.executeQuery(
-					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, clothing where bids.itemId=clothing.itemId and endDate < current_timestamp() group by bids.itemId) as t1, bottoms where t1.itemId = bottoms.itemId group by clothing.type");	
+					"select sum(price) as total, bottoms.type from (select max(bidValue) price, bids.itemId from bids, clothing where bids.itemId=clothing.itemId and endDate < current_timestamp() group by bids.itemId) as t1, bottoms where t1.itemId = bottoms.itemId group by bottoms.type");	
 			while(bottomsTypeInfo.next()) {
 				%>
 				<tr>
@@ -112,7 +112,7 @@
 			<%
 			ResultSet socksTypeInfo = 
 					stmt.executeQuery(
-					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, items where bids.itemId=items.itemId and endDate < current_timestamp() group by bids.itemId) as t1, socks where t1.itemId = socks.itemId group by clothing.type");	
+					"select sum(price) as total, socks.type from (select max(bidValue) price, bids.itemId from bids, clothing where bids.itemId=clothing.itemId and endDate < current_timestamp() group by bids.itemId) as t1, socks where t1.itemId = socks.itemId group by socks.type");	
 			while(socksTypeInfo.next()) {
 				%>
 				<tr>
@@ -132,7 +132,7 @@
 			<%
 			ResultSet onePiecesTypeInfo = 
 					stmt.executeQuery(
-					"select sum(price) as total, clothing.type from (select max(bidValue) price, bids.itemId from bids, items where bids.itemId=items.itemId and endDate < current_timestamp() group by bids.itemId) as t1, onePieces where t1.itemId = onePieces.itemId group by clothing.type");	
+					"select sum(price) as total, onePieces.type from (select max(bidValue) price, bids.itemId from bids, clothing where bids.itemId=clothing.itemId and endDate < current_timestamp() group by bids.itemId) as t1, onePieces where t1.itemId = onePieces.itemId group by onePieces.type");	
 			while(onePiecesTypeInfo.next()) {
 				%>
 				<tr>
@@ -154,7 +154,7 @@
 			<%
 			ResultSet tops2TypeInfo = 
 					stmt.executeQuery(
-					"select count(price) as units, clothing.type from (select max(bidValue) price, itemId from bids) as t1, tops group by clothing.type limit 5");	
+					"select count(price) as units, tops.type from (select max(bidValue) price, itemId from bids) as t1, tops group by tops.type limit 5");	
 			while(tops2TypeInfo.next()) {
 				%>
 				<tr>
@@ -173,7 +173,7 @@
 			<%
 			ResultSet bottoms2TypeInfo = 
 					stmt.executeQuery(
-					"select count(price) as units, clothing.type from (select max(bidValue) price, itemId from bids) as t1, bottoms group by clothing.type limit 5");	
+					"select count(price) as units, bottoms.type from (select max(bidValue) price, itemId from bids) as t1, bottoms group by bottoms.type limit 5");	
 			while(bottoms2TypeInfo.next()) {
 				%>
 				<tr>
@@ -192,7 +192,7 @@
 			<%
 			ResultSet socks2TypeInfo = 
 					stmt.executeQuery(
-					"select count(price) as units, clothing.type from (select max(bidValue) price, itemId from bids) as t1, socks group by clothing.type limit 5");	
+					"select count(price) as units, socks.type from (select max(bidValue) price, itemId from bids) as t1, socks group by socks.type limit 5");	
 			while(socks2TypeInfo.next()) {
 				%>
 				<tr>
@@ -211,7 +211,7 @@
 			<%
 			ResultSet onePieces2TypeInfo = 
 					stmt.executeQuery(
-					"select count(price) as units, clothing.type from (select max(bidValue) price, itemId from bids) as t1, onePieces group by clothing.type limit 5");	
+					"select count(price) as units, onePieces.type from (select max(bidValue) price, itemId from bids) as t1, onePieces group by onePieces.type limit 5");	
 			while(onePieces2TypeInfo.next()) {
 				%>
 				<tr>
@@ -231,7 +231,7 @@
 			<%
 			ResultSet buyer_type_info = 
 					stmt.executeQuery(
-					"select bids.username, count(bids.username) as won_bids from bids, items, (select max(bidValue) as bidValue, itemId from bids group by itemId) t0 where bids.bidValue = t0.bidValue and bids.itemId = t0.itemId and bids.itemId = items.itemId and endDate <= now() group by username order by won_bids desc limit 5");
+					"select bids.username, count(bids.username) as won_bids from bids, clothing, (select max(bidValue) as bidValue, itemId from bids group by itemId) t0 where bids.bidValue = t0.bidValue and bids.itemId = t0.itemId and bids.itemId = clothing.itemId and endDate <= now() group by username order by won_bids desc limit 5");
 					while(buyer_type_info.next()) {
 				%>
 				<tr>

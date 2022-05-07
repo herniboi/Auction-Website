@@ -27,7 +27,7 @@
 		Connection con = db.getConnection();  
 		
 		Statement stmt = con.createStatement(); 
-		String sql = "select clothingType from items where items.itemId =" + itemid + " and items.endDate > now();";
+		String sql = "select clothingType from clothing where clothing.itemId =" + itemid + " and clothing.endDate > now();";
 		System.out.println(sql);
 		ResultSet result = stmt.executeQuery(sql);
 		result.next(); 
