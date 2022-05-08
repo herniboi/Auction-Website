@@ -43,8 +43,8 @@
 			String sortingMethod = request.getParameter("SortingMethod");
 			System.out.println(sortingMethod);
 
-			String sqlQuery = "select * from(select t1.itemId, clothing.username, clothing.startDate, clothing.endDate, clothing.name, clothing.clothingType, clothing.type, clothing.size, t1.bidValue ";
-			sqlQuery+= "from (select * from bids where bidValue in (select max(bidValue) from bids group by itemId) group by itemId) as t1, items ";
+			String sqlQuery = "select * from(select t1.itemId, clothing.username, clothing.startDate, clothing.endDate, clothing.name, clothing.clothingType, t1.bidValue ";
+			sqlQuery+= "from (select * from bids where bidValue in (select max(bidValue) from bids group by itemId) group by itemId) as t1, clothing ";
 			sqlQuery+= "where t1.itemId = clothing.itemId) as t2 ";
 			sqlQuery+= "join " + qType + " on t2.itemId = " + qType + ".itemId";
 			sqlQuery += " where ";

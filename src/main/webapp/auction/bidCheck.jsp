@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Item</title>
 </head>
-<body style="background-color:#CC0033;font-family:trebuchet">>
+<body style="background-color:#CC0033;font-family:trebuchet">
 
 	<%
 		try {
@@ -27,7 +27,9 @@
 			
 			%>
 			<div align="center">
+				<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 			<b>Auction Bid Information</b>
+				</h2>
 			<!-- logout form  -->			  
 			<br>
 			<form method="post" action="../auction/redirectAuction.jsp">
@@ -36,8 +38,10 @@
 			<br>
 			
 			
-			
+			<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
+
 			<b>Item ID: <%=itemId%></b>
+			</h2>
 			</div>
 			
 			<hr noshade size="16">
@@ -116,8 +120,11 @@
 					if(currentUserBid >= currentBidNum) {
 						%> 
 						<div align="center">
+						<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
+
 						<b><br>You currently have the highest bid on this item.</b>
 						<b><br>Your maximum auto-bid is: $<%=currentUserMax  %> </b>
+						</h2>
 						</div>
 						<% 
 						
@@ -147,7 +154,9 @@
 			
 			%>
 			<div align="center">
+				<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 			<button type="button" name="back" onclick="history.back()">Item Page</button>
+				</h2>
 			</div>
 			<% 
 			

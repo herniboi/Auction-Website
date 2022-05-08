@@ -60,7 +60,7 @@
 			 && !(clothingMinimum.matches("[a-zA-Z]+"))// checks if minimum price is all numbers
 			 && (initialprice > 0 )
 			 && (incrementprice > 0 )
-			 && (clothingGender.equals("Male") || clothingGender.equals("Female"))) { 
+			 && (clothingGender.equals("M") || clothingGender.equals("F") || clothingGender.equals("U"))) { 
 				
 				// find the item id
 				ResultSet findItemId = stmt.executeQuery("select max(itemId) from clothing");
@@ -114,7 +114,7 @@
 				ps.setString(2, clothingSize);
 				ps.setString(3, clothingGender);
 				ps.setString(4, clothingColor);
-				ps.setString(5, clothingType);
+				ps.setString(5, itemType);
 				ps.setString(6, clothingType);
 				
 				// run the update for the respective db

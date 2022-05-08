@@ -333,18 +333,18 @@
 						if(dateRequest.next()) {
 							if ( (dateRequest.getString("username").equals(user)) && (dateRequest.getInt("bidValue") >= reserve) ){
 								%>
-								You have won this item!
+								<font color='white'> You have won this item!
 								<%
 					
 							} else if (sellerNameCheck.equals(user)) {
 						 		%>
-						 		The allocated time for this auction has ended. You have sold this item.
-						 		<% 
+						 		<font color='white'>The allocated time for this auction has ended. You have sold this item.
+						 		<%
 							
 							//else if maxBid > reserve - what do?	
 							} else{
 								%>
-								You did not win this item! Better luck next time sport!
+								<font color='white'>You did not win this item! Better luck next time sport!
 								<%
 							}
 						}else{
