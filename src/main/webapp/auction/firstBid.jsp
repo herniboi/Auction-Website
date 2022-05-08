@@ -49,7 +49,7 @@
 			ps.setString(2, setUser);
 			
 			ps.executeUpdate();
-			out.println("You have successfully placed an initial bid on the item.");
+			out.println("<font color='white'>"+"You have successfully placed an initial bid on the item.");
 			%> 
 			<br>
 			<form method="post" action="../auction/redirectAuction.jsp">
@@ -60,8 +60,10 @@
 		}else{
 			out.println("An error has occured.");
 			%>
+			<h2 style='font-family:"Trebuchet", Trebuchet, monospace; color:white'>
 			<button type="button" name="back" onclick="history.back()">Try Again.</button>
-		<%
+			<%
+			</h2>
 		}
 		
 		

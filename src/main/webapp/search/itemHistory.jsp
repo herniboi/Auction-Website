@@ -12,7 +12,7 @@
 <body>
 	<%
 	try{
-		int itemId = Integer.parseInt(request.getParameter("itemId"));
+		int itemId = Integer.parseInt(request.getParameter("itemid"));
 		ApplicationDB db = new ApplicationDB(); 
 		Connection con = db.getConnection(); 
 		
